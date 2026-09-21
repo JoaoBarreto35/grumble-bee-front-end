@@ -316,8 +316,9 @@ export function AdminSettingsPage() {
 
           <p className="admin-settings-copy">
             Checkout Pro · Orders API.
-            Para testes iniciais, mantenha
-            desativado.
+            Ative somente quando Access Token,
+            webhook e URL do frontend estiverem
+            configurados no Render.
           </p>
 
           <div className="admin-setting-status">

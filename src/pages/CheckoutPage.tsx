@@ -33,6 +33,14 @@ type CepState =
   | 'manual'
   | 'error'
 
+type PendingPayment = {
+  order_code: string
+  email: string
+}
+
+const PENDING_PAYMENT_KEY =
+  'gb_pending_mercado_pago'
+
 export function CheckoutPage() {
   const {
     items,
@@ -48,6 +56,21 @@ export function CheckoutPage() {
   const [loadingQuote, setLoadingQuote] =
     useState(false)
   const [message, setMessage] = useState('')
+
+  const [pendingPayment, setPendingPayment] =
+    useState<PendingPayment | null>(() => {
+      try {
+        const raw = sessionStorage.getItem(
+          PENDING_PAYMENT_KEY
+        )
+
+        return raw
+          ? JSON.parse(raw) as PendingPayment
+          : null
+      } catch {
+        return null
+      }
+    })
 
   const [quote, setQuote] =
     useState<ShippingQuote | null>(null)
@@ -390,6 +413,23 @@ export function CheckoutPage() {
     invalidateQuote()
   }
 
+  const savePendingPayment = (
+    value: PendingPayment | null
+  ) => {
+    setPendingPayment(value)
+
+    if (value) {
+      sessionStorage.setItem(
+        PENDING_PAYMENT_KEY,
+        JSON.stringify(value)
+      )
+    } else {
+      sessionStorage.removeItem(
+        PENDING_PAYMENT_KEY
+      )
+    }
+  }
+
   const submit = async (event: FormEvent) => {
     event.preventDefault()
     setMessage('')
@@ -430,48 +470,74 @@ export function CheckoutPage() {
     setSending(true)
 
     try {
-      const order = await remoteApi.createOrder({
-        contact_name: form.contact_name,
-        contact_email: form.contact_email,
-        contact_phone:
-          form.contact_phone || null,
+      let orderCode: string
+      let createdOrder = null
 
-        items: detailed.map(
-          ({ item, variant }) => ({
-            variant_id: variant!.id,
-            quantity: item.qty
+      const canReusePending =
+        settings.payment_enabled
+        && pendingPayment
+        && pendingPayment.email.trim().toLowerCase()
+          === form.contact_email.trim().toLowerCase()
+
+      if (canReusePending) {
+        orderCode = pendingPayment.order_code
+      } else {
+        const order = await remoteApi.createOrder({
+          contact_name: form.contact_name,
+          contact_email: form.contact_email,
+          contact_phone:
+            form.contact_phone || null,
+
+          items: detailed.map(
+            ({ item, variant }) => ({
+              variant_id: variant!.id,
+              quantity: item.qty
+            })
+          ),
+
+          shipping_address: {
+            recipient_name: form.contact_name,
+            phone: form.contact_phone || null,
+            postal_code: form.postal_code,
+            street: form.street,
+            number: form.number,
+            complement: form.complement || null,
+            neighborhood:
+              form.neighborhood || null,
+            city: form.city,
+            state: form.state,
+            country_code: 'BR'
+          },
+
+          shipping_method:
+            quote.method ?? 'Região 012',
+
+          customer_note:
+            form.customer_note || null
+        })
+
+        createdOrder = order
+        orderCode = order.order_code
+
+        if (settings.payment_enabled) {
+          savePendingPayment({
+            order_code: order.order_code,
+            email: form.contact_email
           })
-        ),
-
-        shipping_address: {
-          recipient_name: form.contact_name,
-          phone: form.contact_phone || null,
-          postal_code: form.postal_code,
-          street: form.street,
-          number: form.number,
-          complement: form.complement || null,
-          neighborhood:
-            form.neighborhood || null,
-          city: form.city,
-          state: form.state,
-          country_code: 'BR'
-        },
-
-        shipping_method:
-          quote.method ?? 'Região 012',
-
-        customer_note:
-          form.customer_note || null
-      })
+        }
+      }
 
       if (!settings.payment_enabled) {
+        savePendingPayment(null)
         clearCart()
 
         navigate(
           '/pedido-confirmado',
           {
             replace: true,
-            state: { order }
+            state: {
+              order: createdOrder
+            }
           }
         )
 
@@ -480,20 +546,27 @@ export function CheckoutPage() {
 
       const payment =
         await remoteApi.createMercadoPagoCheckout(
-          order.order_code,
+          orderCode,
           form.contact_email
         )
 
+      savePendingPayment(null)
       clearCart()
+
       window.location.assign(
         payment.checkout_url
       )
 
     } catch (error) {
-      setMessage(
+      const baseMessage =
         error instanceof Error
           ? error.message
           : 'Não foi possível finalizar o pedido.'
+
+      setMessage(
+        pendingPayment
+          ? `${baseMessage} O pedido ${pendingPayment.order_code} já existe; tente novamente para reabrir o Mercado Pago sem criar outro pedido.`
+          : baseMessage
       )
     } finally {
       setSending(false)
@@ -889,8 +962,10 @@ export function CheckoutPage() {
 
             <p>
               {settings?.payment_enabled
-                ? 'Após confirmar o pedido, você será redirecionado ao Checkout Pro do Mercado Pago.'
-                : 'O pagamento está desativado. O pedido será criado e o estoque ficará reservado para validarmos o fluxo.'}
+                ? pendingPayment
+                  ? `O pedido ${pendingPayment.order_code} já foi criado. Clique abaixo para retomar o pagamento no Mercado Pago.`
+                  : 'Ao continuar, seu pedido será criado, o estoque será reservado e você será redirecionado ao Checkout Pro do Mercado Pago.'
+                : 'O pagamento online está desativado no backend. Ative-o no ADM quando as credenciais do Mercado Pago estiverem configuradas.'}
             </p>
           </div>
 
@@ -908,7 +983,9 @@ export function CheckoutPage() {
             {sending
               ? 'Processando...'
               : settings?.payment_enabled
-                ? 'Pagar com Mercado Pago'
+                ? pendingPayment
+                  ? 'Retomar pagamento no Mercado Pago'
+                  : 'Pagar com Mercado Pago'
                 : 'Criar pedido de teste'}
           </button>
 

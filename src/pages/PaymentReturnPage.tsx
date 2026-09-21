@@ -9,17 +9,17 @@ const content = {
   success: {
     eyebrow: 'PAGAMENTO',
     title: 'Pagamento recebido',
-    text: 'O Mercado Pago retornou sua compra. A confirmação definitiva é feita pelo nosso servidor através do webhook.'
+    text: 'Você voltou do Mercado Pago. A confirmação definitiva é feita automaticamente pelo nosso servidor; o status do pedido pode levar alguns segundos para atualizar.'
   },
   pending: {
     eyebrow: 'PAGAMENTO',
     title: 'Pagamento pendente',
-    text: 'Seu pagamento ainda está sendo processado. Você pode acompanhar o status pelo código do pedido.'
+    text: 'Seu pagamento ainda está sendo processado pelo Mercado Pago. Acompanhe o status pelo código do pedido.'
   },
   failure: {
     eyebrow: 'PAGAMENTO',
     title: 'Pagamento não concluído',
-    text: 'O pagamento não foi concluído. Consulte seu pedido para acompanhar o status e tentar novamente quando disponível.'
+    text: 'O pagamento não foi concluído. Seu pedido pode continuar reservado por alguns minutos; consulte o pedido para acompanhar o status.'
   }
 } as const
 
