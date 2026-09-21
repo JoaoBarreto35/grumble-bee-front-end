@@ -1434,3 +1434,239 @@ body.home-page > .home-counter-link + .header{
     width:100%;
   }
 }
+
+
+/* V5.3 — Checkout Transparente Mercado Pago */
+.transparent-payment-card{
+  margin-top:8px;
+  padding:18px;
+  border:1px solid #d4cdbf;
+  background:#f7f3e9;
+}
+.transparent-payment-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:16px;
+}
+.transparent-payment-head small{
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+.transparent-payment-head h2{
+  margin:5px 0 0;
+  font-size:20px;
+}
+.transparent-payment-head>span{
+  padding:6px 9px;
+  border:1px solid #cfc7b8;
+  background:#fff;
+  font-size:9px;
+  font-weight:800;
+}
+.payment-method-tabs{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  margin-bottom:14px;
+}
+.payment-method-tabs button{
+  display:grid;
+  gap:3px;
+  padding:14px;
+  text-align:left;
+  border:1px solid #d2cabc;
+  background:#fff;
+  color:#111;
+  cursor:pointer;
+}
+.payment-method-tabs button.active{
+  border-color:#111;
+  box-shadow:inset 0 0 0 1px #111;
+}
+.payment-method-tabs button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+.payment-method-tabs b{
+  font-size:12px;
+  letter-spacing:.06em;
+}
+.payment-method-tabs span{
+  font-size:9px;
+  color:#746e63;
+}
+.payment-config-warning,
+.mp-card-warning{
+  margin:10px 0;
+  padding:11px 12px;
+  border:1px solid #e1c0b7;
+  background:#faefec;
+  color:#8e3327;
+  font-size:10px;
+  line-height:1.5;
+}
+.pix-start-card{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:12px;
+  align-items:center;
+  padding:14px;
+  background:#fff;
+  border:1px solid #ddd5c7;
+}
+.pix-start-card .buy-btn{
+  grid-column:1/-1;
+  margin-top:4px;
+}
+.pix-icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.pix-start-card strong{font-size:14px}
+.pix-start-card p{
+  margin:4px 0 0;
+  font-size:10px;
+  line-height:1.5;
+  color:#6f695f;
+}
+.pix-result-card{
+  text-align:center;
+  padding:18px;
+  background:#fff;
+  border:1px solid #d7d0c3;
+}
+.pix-result-card>small{
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.1em;
+}
+.pix-result-card h3{
+  margin:7px 0 14px;
+  font-size:22px;
+}
+.pix-qr-image{
+  width:min(250px,80vw);
+  aspect-ratio:1;
+  object-fit:contain;
+  background:#fff;
+  margin:0 auto 12px;
+  display:block;
+}
+.pix-total{
+  display:block;
+  font-size:23px;
+  margin-bottom:5px;
+}
+.pix-waiting{
+  font-size:10px;
+  color:#6c675e;
+}
+.pix-code{
+  width:100%;
+  min-height:82px;
+  margin-top:12px;
+  padding:10px;
+  resize:none;
+  border:1px solid #d6cfc2;
+  background:#f5f1e8;
+  font-size:9px;
+  line-height:1.4;
+}
+.pix-copy-button{
+  width:100%;
+  margin-top:8px;
+  padding:13px 14px;
+  border:0;
+  background:#111;
+  color:#fff;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.07em;
+  cursor:pointer;
+}
+.pix-ticket-link{
+  display:inline-block;
+  margin-top:12px;
+  color:#111;
+  font-size:9px;
+  font-weight:800;
+  text-decoration:underline;
+}
+.card-payment-area{
+  padding:12px;
+  background:#fff;
+  border:1px solid #d7d0c3;
+}
+.mp-card-brick-shell{position:relative}
+.mp-card-loading{
+  padding:12px;
+  font-size:10px;
+  color:#6e685f;
+}
+.mp-secure-note{
+  margin:10px 0 0;
+  padding-top:10px;
+  border-top:1px solid #eee7db;
+  font-size:9px;
+  line-height:1.5;
+  color:#6c665c;
+}
+.pending-order-note{
+  margin:12px 0 0;
+  font-size:9px;
+  color:#6b655b;
+}
+.checkout-security-box{
+  margin-top:16px;
+  padding:12px;
+  background:#f4f0e6;
+  border:1px solid #ded7ca;
+}
+.checkout-security-box strong{font-size:10px}
+.checkout-security-box p{
+  margin:5px 0 0;
+  font-size:9px;
+  line-height:1.45;
+  color:#6e685e;
+}
+@media(max-width:560px){
+  .payment-method-tabs{grid-template-columns:1fr 1fr}
+  .transparent-payment-head{align-items:center}
+}
+
+.three-ds-shell{
+  padding:14px;
+  text-align:center;
+}
+.three-ds-shell small{
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.1em;
+}
+.three-ds-shell h3{margin:6px 0 6px;font-size:20px}
+.three-ds-shell p,.three-ds-shell span{
+  font-size:9px;
+  line-height:1.45;
+  color:#6c665d;
+}
+.three-ds-frame{
+  width:100%;
+  max-width:500px;
+  height:600px;
+  margin:14px auto;
+  border:1px solid #ddd5c8;
+  background:#fff;
+  display:block;
+}
+@media(max-width:980px){.three-ds-frame{height:440px}}

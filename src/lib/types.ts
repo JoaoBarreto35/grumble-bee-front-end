@@ -261,6 +261,7 @@ export type CheckoutSettings = {
   allow_credit_card: boolean
   allow_ticket: boolean
   stock_reservation_minutes: number
+  mercado_pago_public_key: string | null
 }
 
 export type ShippingZoneAdmin = {
@@ -284,4 +285,31 @@ export type MercadoPagoCheckout = {
   status: string
   status_detail: string | null
   expires_at: string | null
+}
+
+
+export type MercadoPagoTransparentPayment = {
+  order_code: string
+  payment_id: string
+  provider_order_id: string
+  provider_payment_id: string | null
+  payment_method: string
+  status: string
+  status_detail: string | null
+  qr_code: string | null
+  qr_code_base64: string | null
+  ticket_url: string | null
+  challenge_url: string | null
+  expires_at: string | null
+}
+
+export type MercadoPagoCardPayload = {
+  order_code: string
+  email: string
+  token: string
+  payment_method_id: string
+  payment_type_id: 'credit_card' | 'debit_card'
+  installments: number
+  identification_type?: string | null
+  identification_number?: string | null
 }

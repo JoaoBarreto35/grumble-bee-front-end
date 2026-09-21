@@ -21,7 +21,9 @@ import type {
   ShippingQuoteRequest,
   CheckoutSettings,
   ShippingZoneAdmin,
-  MercadoPagoCheckout
+  MercadoPagoCheckout,
+  MercadoPagoTransparentPayment,
+  MercadoPagoCardPayload
 } from './types'
 
 type ProductListApi = { id: string; slug: string }
@@ -206,6 +208,29 @@ export const remoteApi = {
           order_code: orderCode,
           email
         })
+      }
+    )
+  },
+
+  async createMercadoPagoPix(orderCode: string, email: string) {
+    return request<MercadoPagoTransparentPayment>(
+      '/payments/mercado-pago/pix',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          order_code: orderCode,
+          email
+        })
+      }
+    )
+  },
+
+  async createMercadoPagoCard(payload: MercadoPagoCardPayload) {
+    return request<MercadoPagoTransparentPayment>(
+      '/payments/mercado-pago/card',
+      {
+        method: 'POST',
+        body: JSON.stringify(payload)
       }
     )
   },

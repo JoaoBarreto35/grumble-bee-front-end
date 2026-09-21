@@ -315,7 +315,7 @@ export function AdminSettingsPage() {
           <h2>Mercado Pago</h2>
 
           <p className="admin-settings-copy">
-            Checkout Pro · Orders API.
+            Checkout Transparente · Orders API.
             Ative somente quando Access Token,
             webhook e URL do frontend estiverem
             configurados no Render.
@@ -386,7 +386,7 @@ export function AdminSettingsPage() {
             Reserva de estoque (minutos)
             <input
               type="number"
-              min="1"
+              min="30"
               max="1440"
               value={
                 checkout
@@ -439,9 +439,7 @@ export function AdminSettingsPage() {
           </button>
 
           <p className="admin-settings-warning">
-            Ative somente depois que
-            FRONTEND_BASE_URL, Access Token e
-            webhook estiverem configurados.
+            Ative somente depois que Public Key, Access Token e webhook estiverem configurados no Render.
           </p>
         </section>
       </div>
