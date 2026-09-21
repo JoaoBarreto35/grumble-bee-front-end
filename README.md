@@ -1,101 +1,63 @@
-# Grumble Bee React V5.2 — Netlify + Mercado Pago
+# Grumble Bee React V5.3 — Checkout Transparente Mercado Pago
 
-Frontend de produção preparado para:
+Base visual preservada da V5.2/V6.10.
 
-- https://grumble-bee.netlify.app
-- Backend:
-  https://grumble-bee-backend-v2-1-admin-fix.onrender.com
+## Novo fluxo
 
-## O que já está integrado
+O comprador não sai mais da Grumble Bee.
 
-O checkout usa:
+### Pix
 
-1. CEP automático;
-2. validação Região 012;
-3. cotação real pelo backend;
-4. criação do pedido;
-5. reserva de estoque;
-6. `POST /payments/mercado-pago/checkout`;
-7. recebe `checkout_url`;
-8. redireciona para o Checkout Pro;
-9. recebe retorno nas páginas:
-   - `/pagamento/sucesso`
-   - `/pagamento/pendente`
-   - `/pagamento/falha`
+1. endereço e frete são validados;
+2. o pedido `GB-...` é criado;
+3. o frontend chama `/payments/mercado-pago/pix`;
+4. o QR Code e o Pix Copia e Cola aparecem na própria página;
+5. o checkout consulta o pedido a cada 5 segundos;
+6. o webhook confirma o pagamento;
+7. o carrinho é limpo e o pedido aparece como pago.
 
-O React NÃO usa Public Key nem Access Token.
+### Cartão
 
-As credenciais do Mercado Pago ficam somente no Render.
+Usa o componente oficial `CardPayment` de `@mercadopago/sdk-react`.
 
-## Proteção contra pedido duplicado
+- número do cartão, CVV e validade são tratados pelo SDK do Mercado Pago;
+- a Grumble Bee recebe apenas o token;
+- o backend envia esse token à Orders API;
+- o total utilizado vem do pedido salvo no backend, nunca do frontend.
 
-Se o pedido for criado mas houver erro antes de abrir o Mercado Pago,
-a V5.2 guarda o código temporariamente na sessão do navegador.
+## Public Key
 
-Ao clicar novamente, ela tenta reabrir o Mercado Pago para o mesmo
-pedido em vez de criar outro pedido.
+O frontend NÃO precisa guardar a Public Key no Netlify.
 
-## Netlify
+O backend V2.5 lê:
 
-`.env.production` já contém:
+```env
+MERCADO_PAGO_PUBLIC_KEY=...
+```
+
+e entrega a chave pública por `/checkout/settings`.
+
+## Deploy Netlify
+
+A API continua:
 
 ```env
 VITE_DEMO_MODE=false
 VITE_API_URL=https://grumble-bee-backend-v2-1-admin-fix.onrender.com
 ```
 
-`netlify.toml` contém:
+`netlify.toml` já mantém o fallback SPA.
 
-```toml
-[build]
-  command = "npm run build"
-  publish = "dist"
+## Ordem recomendada
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
+1. subir Backend V2.5;
+2. rodar SQL 005;
+3. configurar Public Key no Render;
+4. confirmar `/checkout/settings`;
+5. publicar esta V5.3 no Netlify;
+6. ativar pagamentos no ADM;
+7. testar Pix e cartão.
 
-Assim as rotas React funcionam também ao voltar do Mercado Pago.
+## 3DS 2.0
 
-## Render obrigatório
-
-Configure:
-
-```env
-FRONTEND_BASE_URL=https://grumble-bee.netlify.app
-MERCADO_PAGO_API_BASE=https://api.mercadopago.com
-MERCADO_PAGO_ACCESS_TOKEN=SEU_ACCESS_TOKEN
-MERCADO_PAGO_WEBHOOK_SECRET=SUA_CHAVE_SECRETA_DO_WEBHOOK
-```
-
-`CORS_ORIGINS` precisa incluir:
-
-```text
-https://grumble-bee.netlify.app
-```
-
-O webhook do Mercado Pago continua:
-
-```text
-https://grumble-bee-backend-v2-1-admin-fix.onrender.com/webhooks/mercado-pago
-```
-
-## Ativar Mercado Pago
-
-Depois de configurar as variáveis acima, abra:
-
-`/admin/configuracoes`
-
-e ative **Pagamentos**.
-
-Ou no Neon:
-
-```sql
-UPDATE checkout_settings
-SET payment_enabled = TRUE
-WHERE id = 1;
-```
-
-Para o primeiro teste, prefira credenciais de TESTE do Mercado Pago.
+Se o banco exigir autenticação adicional, a API retorna `challenge_url` e a V5.3 abre o Challenge em iframe dentro da própria Grumble Bee. O frontend monitora o pedido e conclui a compra quando o webhook/status confirmar o pagamento.
