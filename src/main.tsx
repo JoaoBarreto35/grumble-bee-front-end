@@ -6,6 +6,7 @@ import { CatalogProvider } from './context/CatalogContext'
 import { CartProvider } from './context/CartContext'
 import { CustomerAuthProvider } from './context/CustomerAuthContext'
 import './styles.css'
+import './brand-v54.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

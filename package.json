@@ -1,12 +1,13 @@
 {
   "name": "grumble-bee-storefront",
   "private": true,
-  "version": "5.3.0",
+  "version": "5.4.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "build": "npm run check:mp && tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "check:mp": "node -e \"const p=require('./package.json'); if(!p.dependencies || !p.dependencies['@mercadopago/sdk-react']) throw new Error('Mercado Pago SDK ausente do package.json'); console.log('Mercado Pago SDK configurado:', p.dependencies['@mercadopago/sdk-react'])\""
   },
   "dependencies": {
     "react": "^18.3.1",
