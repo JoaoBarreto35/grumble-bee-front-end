@@ -2,15 +2,26 @@ import { Link } from 'react-router-dom'
 
 export function Footer() {
   return (
-    <footer className="brand-footer">
+    <footer className="brand-footer lightning-footer">
       <div className="brand-footer-art">
-        <img src="/assets/brand-localz-badge.png" alt="" />
+        <div className="footer-lightning-mark">
+          <img
+            src="/assets/logo-grumble-bee.png"
+            alt=""
+          />
+          <span>⚡</span>
+        </div>
+
         <div>
-          <small>LOCALZ ONLY · 012</small>
-          <h2>GRUMBLE<br />BEE</h2>
+          <small>GRUMBLE BEE</small>
+
+          <h2>
+            NO BASIC<br />
+            JUST IDENTITY
+          </h2>
+
           <p>
-            Drops limitados, identidade local e peças que não voltam
-            só porque alguém perdeu.
+            Limited drops, custom pieces, only 012
           </p>
         </div>
       </div>
@@ -18,7 +29,7 @@ export function Footer() {
       <div className="footer-cols">
         <div className="footer-col">
           <strong>Comprar</strong>
-          <Link to="/produtos">Drop atual</Link>
+          <Link to="/produtos">Nova coleção</Link>
           <Link to="/produtos">Camisetas</Link>
           <Link to="/produtos">Jaquetas</Link>
         </div>
@@ -27,7 +38,7 @@ export function Footer() {
           <strong>Ajuda</strong>
           <a href="#medidas">Tabela de medidas</a>
           <a href="#trocas">Trocas e devoluções</a>
-          <a href="#envios">Envios · Região 012</a>
+          <a href="#envios">Envios</a>
         </div>
 
         <div className="footer-col">
@@ -53,8 +64,8 @@ export function Footer() {
 
       <div className="brand-footer-bottom">
         <span>© 2026 GRUMBLE BEE</span>
-        <b>NO BASIC · JUST IDENTITY</b>
-        <span>012 · SP</span>
+        <b>⚡</b>
+        <span>STREETWEAR · LIMITED DROPS</span>
       </div>
     </footer>
   )

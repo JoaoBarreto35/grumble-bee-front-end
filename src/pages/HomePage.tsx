@@ -13,6 +13,7 @@ export function HomePage() {
 
   const visibleSeasons = seasons.filter(isPublicSeason)
   const current = visibleSeasons.find(s => s.status === 'current')
+
   const upcoming = visibleSeasons
     .filter(s => s.status === 'upcoming')
     .sort(
@@ -28,7 +29,8 @@ export function HomePage() {
   const featured = products
     .filter(
       p =>
-        p.is_featured && isPublicProduct(p)
+        p.is_featured
+        && isPublicProduct(p)
     )
     .sort(
       (a, b) =>
@@ -57,7 +59,7 @@ export function HomePage() {
     <main>
       {current && (
         <section
-          className="home-season-banner brand-season-hero"
+          className="home-season-banner brand-season-hero lightning-hero"
           aria-label={`Temporada atual ${current.name}`}
         >
           <Link
@@ -71,21 +73,27 @@ export function HomePage() {
               fallbackMobile="/assets/colecao-anime.jpg"
               alt={`Temporada ${current.name}`}
             />
-            <span className="brand-hero-index">
-              DROP {String(current.number).padStart(2, '0')}
+
+            <span className="brand-hero-lightning lightning-one">
+              ⚡
+            </span>
+
+            <span className="brand-hero-lightning lightning-two">
+              ⚡
             </span>
           </Link>
 
           <div className="home-season-copy brand-season-copy">
-            <div className="brand-season-stamp">
+            <div className="brand-season-mark">
               <img
-                src="/assets/brand-localz-badge.png"
+                src="/assets/logo-grumble-bee.png"
                 alt=""
               />
+              <span>⚡</span>
             </div>
 
             <div className="section-kicker">
-              Temporada atual · Localz Only
+              Temporada atual
             </div>
 
             <h2>{current.name}</h2>
@@ -95,9 +103,9 @@ export function HomePage() {
             </p>
 
             <div className="brand-season-tags">
-              <span>012</span>
               <span>LIMITED DROP</span>
-              <span>NO RESTOCK</span>
+              <span>GRUMBLE BEE</span>
+              <span>⚡</span>
             </div>
 
             <div className="actions">
@@ -113,17 +121,19 @@ export function HomePage() {
         </section>
       )}
 
-      <section className="brand-marquee" aria-hidden="true">
+      <section className="brand-marquee lightning-marquee" aria-hidden="true">
         <div>
-          LOCALZ ONLY 012
-          <b>⚡</b>
           GRUMBLE BEE
-          <b>⚡</b>
-          NO BASIC JUST IDENTITY
           <b>⚡</b>
           LIMITED DROPS
           <b>⚡</b>
-          LOCALZ ONLY 012
+          STREETWEAR
+          <b>⚡</b>
+          GRBBZZZZ
+          <b>⚡</b>
+          GRUMBLE BEE
+          <b>⚡</b>
+          LIMITED DROPS
         </div>
       </section>
 
@@ -136,11 +146,11 @@ export function HomePage() {
                 : 'Grumble Bee'}
             </div>
 
-            <h2>Peças que carregam<br />a marca na rua.</h2>
+            <h2>Produtos em destaque</h2>
           </div>
 
           <Link className="text-link" to="/produtos">
-            Ver tudo ↗
+            Ver tudo
           </Link>
         </div>
 
@@ -160,47 +170,34 @@ export function HomePage() {
         )}
       </section>
 
-      <section className="brand-manifesto" id="editorial">
-        <div className="brand-manifesto-art">
+      <section className="campaign brand-campaign" id="editorial">
+        <div className="brand-campaign-art">
           <img
             src="/assets/brand-localz-graffiti.png"
-            alt="Grumble Bee Localz Only 012"
+            alt="Editorial Grumble Bee"
           />
+
+          <span className="campaign-lightning campaign-lightning-a">⚡</span>
+          <span className="campaign-lightning campaign-lightning-b">⚡</span>
         </div>
 
-        <div className="brand-manifesto-copy">
-          <small>MANIFESTO 012</small>
+        <div className="campaign-copy">
+          <div className="eyebrow">Editorial</div>
+
           <h2>
-            LOCAL<br />
-            BARULHENTO<br />
-            NOSSO.
+            NO BASIC<br />
+            JUST IDENTITY
           </h2>
 
           <p>
-            A temporada muda. A abelha fica.
-            Anime hoje, horror amanhã, mas sempre com
-            a mesma assinatura: peça limitada, visual forte
-            e identidade de quem é daqui.
+            Limited drops, custom pieces, only 012
           </p>
 
-          <div className="brand-manifesto-numbers">
-            <div>
-              <strong>012</strong>
-              <span>território</span>
-            </div>
-            <div>
-              <strong>01</strong>
-              <span>drop por vez</span>
-            </div>
-            <div>
-              <strong>0</strong>
-              <span>básico</span>
-            </div>
+          <div className="actions">
+            <Link className="btn light" to="/produtos">
+              Ver produtos
+            </Link>
           </div>
-
-          <Link className="btn dark" to="/produtos">
-            Entrar no drop
-          </Link>
         </div>
       </section>
 
@@ -210,6 +207,7 @@ export function HomePage() {
             <div className="section-kicker">
               Coleções
             </div>
+
             <h2>
               Agora, antes<br />
               e depois.
@@ -229,19 +227,21 @@ export function HomePage() {
               archived
                 ? {
                     backgroundImage:
-                      `linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.72)),url("${seasonCardImage(archived, '/assets/bomber-preta.jpg')}")`
+                      `linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url("${seasonCardImage(archived, '/assets/bomber-preta.jpg')}")`
                   }
                 : undefined
             }
           >
             <div className="collection-tile-content">
               <span className="status">
-                ARQUIVO · ESGOTADO
+                Arquivo
               </span>
+
               <h2>
                 {archived?.name
                   ?? 'As que já passaram.'}
               </h2>
+
               <p>
                 {archived?.description
                   ?? 'Peças encerradas continuam na história da marca — sem reposição.'}
@@ -255,18 +255,20 @@ export function HomePage() {
               to="/colecao-atual"
               style={{
                 backgroundImage:
-                  `linear-gradient(90deg,rgba(0,0,0,.76),rgba(0,0,0,.08)),url("${seasonCardImage(current, '/assets/colecao-anime-landscape.jpg')}")`
+                  `linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.08)),url("${seasonCardImage(current, '/assets/colecao-anime-landscape.jpg')}")`
               }}
             >
               <div className="collection-tile-content">
                 <span className="status">
-                  AGORA · TEMPORADA {String(current.number).padStart(2, '0')}
+                  Agora · Temporada {String(current.number).padStart(2, '0')}
                 </span>
+
                 <h2>
                   {current.name}
                   <br />
                   Drop.
                 </h2>
+
                 <p>{current.theme}</p>
               </div>
             </Link>
@@ -278,18 +280,20 @@ export function HomePage() {
               to="/em-breve"
               style={{
                 backgroundImage:
-                  `linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.72)),url("${seasonCardImage(upcoming, '/assets/colecao-horror.jpg')}")`
+                  `linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.62)),url("${seasonCardImage(upcoming, '/assets/colecao-horror.jpg')}")`
               }}
             >
               <div className="collection-tile-content">
                 <span className="status">
-                  PRÓXIMO SINAL
+                  Próxima temporada
                 </span>
+
                 <h2>
                   {upcoming.name}
                   <br />
                   is coming.
                 </h2>
+
                 <p>
                   {upcoming.description
                     ?? upcoming.theme}

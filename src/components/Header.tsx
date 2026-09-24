@@ -12,12 +12,14 @@ export function Header({
 
   return (
     <header className="header brand-header">
-      <div className="brand-header-rail">
-        <span>LOCALZ ONLY</span>
-        <b>012</b>
+      <div className="brand-header-rail lightning-rail">
         <span>GRUMBLE BEE</span>
-        <i>⚡</i>
+        <b>⚡</b>
         <span>LIMITED DROPS</span>
+        <b>⚡</b>
+        <span>STREETWEAR</span>
+        <b>⚡</b>
+        <span>GRBBZZZZ</span>
       </div>
 
       <div className="header-main">
@@ -38,9 +40,10 @@ export function Header({
               alt="Símbolo Grumble Bee"
             />
           </span>
+
           <span className="brand-lockup">
             <strong>GRUMBLE BEE</strong>
-            <small>LOCALZ ONLY · 012</small>
+            <small>STREETWEAR · LIMITED DROPS</small>
           </span>
         </Link>
 
@@ -72,7 +75,7 @@ export function Header({
       </div>
 
       <nav className="category-strip">
-        <Link to="/produtos">Drop atual</Link>
+        <Link to="/produtos">Nova coleção</Link>
         <Link to="/produtos#camisetas">Camisetas</Link>
         <Link to="/produtos#camisas">Camisas</Link>
         <Link to="/produtos#jaquetas">Jaquetas</Link>

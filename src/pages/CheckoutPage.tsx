@@ -608,9 +608,7 @@ export function CheckoutPage() {
   return (
     <main>
       <section className="page-hero checkout-head brand-checkout-head">
-        <div className="brand-checkout-stamp">
-          <img src="/assets/brand-localz-badge.png" alt="" />
-        </div>
+        <div className="brand-checkout-bolt" aria-hidden="true">⚡</div>
         <div className="breadcrumb">
           <Link to="/carrinho">Carrinho</Link> {' > '} Checkout
         </div>

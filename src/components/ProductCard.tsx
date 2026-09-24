@@ -33,12 +33,12 @@ export function ProductCard({
               soldOut
                 ? 'ESGOTADO'
                 : product.is_featured
-                  ? 'GRUMBLE PICK'
+                  ? 'DESTAQUE'
                   : product.season.name
             )}
         </span>
 
-        <span className="brand-card-012">012</span>
+        <span className="brand-card-lightning">⚡</span>
 
         <img
           src={productPrimaryImage(product)}

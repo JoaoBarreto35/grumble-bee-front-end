@@ -34,8 +34,8 @@ export function DeliveryJourney({
     <section className={`delivery-journey status-${status}`}>
       <div className="delivery-journey-head">
         <div>
-          <small>ROTA DO PEDIDO</small>
-          <h3>Da colmeia até você.</h3>
+          <small>ACOMPANHAMENTO DO PEDIDO</small>
+          <h3>Acompanhe cada etapa.</h3>
         </div>
         <img src="/assets/logo-grumble-bee.png" alt="" />
       </div>

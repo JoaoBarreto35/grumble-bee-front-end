@@ -25,26 +25,16 @@ export function AdminDashboardPage() {
       )
       .slice(0, 5)
 
-  const featured =
-    products.filter(p => p.is_featured).length
-
-  const available =
-    products.filter(
-      p => p.status === 'available'
-    ).length
-
   return (
     <div className="admin-page brand-admin-dashboard">
-      <div className="admin-dashboard-hero">
+      <div className="admin-dashboard-hero lightning-admin-hero">
         <div>
-          <small>CONTROL ROOM · 012</small>
-          <h1>
-            A colmeia<br />
-            está operando.
-          </h1>
+          <small>PAINEL</small>
+
+          <h1>Visão geral</h1>
+
           <p>
-            Catálogo, drops, estoque e pedidos
-            no mesmo radar.
+            Acompanhe temporada, produtos, estoque e pedidos.
           </p>
 
           <div className="admin-dashboard-actions">
@@ -64,39 +54,38 @@ export function AdminDashboardPage() {
           </div>
         </div>
 
-        <img
-          src="/assets/brand-localz-graffiti.png"
-          alt=""
-        />
+        <div className="admin-dashboard-brand-art">
+          <img
+            src="/assets/brand-localz-graffiti.png"
+            alt=""
+          />
+
+          <span>⚡</span>
+          <span>⚡</span>
+        </div>
       </div>
 
       <div className="admin-stats brand-admin-stats">
         <article>
-          <span>Drop atual</span>
+          <span>Temporada atual</span>
           <strong>{current?.name ?? '—'}</strong>
-          <small>
-            {current
-              ? `TEMPORADA ${String(current.number).padStart(2, '0')}`
-              : 'SEM TEMPORADA ATIVA'}
-          </small>
         </article>
 
         <article>
-          <span>Produtos ativos</span>
-          <strong>{available}</strong>
-          <small>{products.length} cadastrados</small>
+          <span>Produtos</span>
+          <strong>{products.length}</strong>
         </article>
 
         <article>
           <span>Peças em estoque</span>
           <strong>{stock}</strong>
-          <small>somando todas as variantes</small>
         </article>
 
         <article>
-          <span>Grumble picks</span>
-          <strong>{featured}</strong>
-          <small>destaques na vitrine</small>
+          <span>Destaques</span>
+          <strong>
+            {products.filter(p => p.is_featured).length}
+          </strong>
         </article>
       </div>
 
@@ -104,18 +93,21 @@ export function AdminDashboardPage() {
         <section className="admin-brand-panel">
           <div className="admin-panel-head">
             <div>
-              <small>PRÓXIMO SINAL</small>
-              <h2>Próxima temporada</h2>
+              <small>PRÓXIMA TEMPORADA</small>
+              <h2>
+                {upcoming?.name ?? 'Sem temporada agendada'}
+              </h2>
             </div>
+
             <span>⚡</span>
           </div>
 
           <div className="admin-next-drop">
-            <strong>{upcoming?.name ?? 'Sem drop agendado'}</strong>
             <p>
               {upcoming?.description
-                ?? 'Cadastre uma temporada upcoming para manter a fila da marca visível.'}
+                ?? 'Cadastre uma temporada upcoming para preparar o próximo drop.'}
             </p>
+
             <Link to="/admin/temporadas">
               Editar temporadas ↗
             </Link>
@@ -126,9 +118,10 @@ export function AdminDashboardPage() {
           <div className="admin-panel-head">
             <div>
               <small>ESTOQUE</small>
-              <h2>Radar de baixa</h2>
+              <h2>Produtos com estoque baixo</h2>
             </div>
-            <span>012</span>
+
+            <span>⚡</span>
           </div>
 
           {lowStock.length === 0 ? (
@@ -139,9 +132,7 @@ export function AdminDashboardPage() {
             <div className="admin-low-stock-list">
               {lowStock.map(product => (
                 <div key={product.id}>
-                  <span>
-                    {product.name}
-                  </span>
+                  <span>{product.name}</span>
                   <strong>
                     {product.total_available}
                   </strong>

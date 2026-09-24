@@ -21,7 +21,7 @@ export function AdminLayout() {
   if (!ready) {
     return (
       <main className="admin-loading">
-        Carregando central Grumble Bee...
+        Carregando...
       </main>
     )
   }
@@ -39,18 +39,22 @@ export function AdminLayout() {
     <div className="admin-app brand-admin-app">
       <aside className="admin-side brand-admin-side">
         <a className="admin-brand" href="/">
-          <img
-            src="/assets/brand-localz-badge.png"
-            alt=""
-          />
+          <span className="admin-brand-symbol">
+            <img
+              src="/assets/logo-grumble-bee.png"
+              alt=""
+            />
+            <b>⚡</b>
+          </span>
+
           <span>
             <strong>GRUMBLE BEE</strong>
-            <small>CONTROL ROOM · 012</small>
+            <small>ADMIN</small>
           </span>
         </a>
 
         <div className="admin-side-label">
-          OPERAÇÃO
+          PAINEL
         </div>
 
         <nav>
@@ -63,6 +67,7 @@ export function AdminLayout() {
               <span className="admin-nav-icon">
                 {icon}
               </span>
+
               <span>{label}</span>
             </NavLink>
           ))}
@@ -70,10 +75,15 @@ export function AdminLayout() {
 
         <div className="admin-side-pulse">
           <span className="admin-live-dot" />
+
           <div>
             <small>SISTEMA</small>
             <strong>ONLINE</strong>
           </div>
+
+          <b className="admin-pulse-lightning">
+            ⚡
+          </b>
         </div>
 
         <div className="admin-side-actions">
@@ -101,11 +111,13 @@ export function AdminLayout() {
           </button>
         </div>
 
-        <img
-          className="admin-side-watermark"
-          src="/assets/logo-grumble-bee.png"
-          alt=""
-        />
+        <span className="admin-side-bolt admin-side-bolt-a">
+          ⚡
+        </span>
+
+        <span className="admin-side-bolt admin-side-bolt-b">
+          ⚡
+        </span>
       </aside>
 
       <section className="admin-content brand-admin-content">
@@ -118,16 +130,15 @@ export function AdminLayout() {
         <div className="admin-topbar">
           <div>
             <span className="admin-topbar-kicker">
-              LOCALZ ONLY
+              GRUMBLE BEE
             </span>
-            <strong>012 / ADMIN</strong>
+
+            <strong>PAINEL ADMINISTRATIVO</strong>
           </div>
 
           <div className="admin-topbar-right">
-            <span>
-              GRUMBLE BEE
-            </span>
             <b>⚡</b>
+            <span>GRBBZZZZ</span>
           </div>
         </div>
 

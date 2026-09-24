@@ -1528,3 +1528,489 @@ body{
     opacity:.25;
   }
 }
+
+
+/* =========================================================
+   V5.4.1 — STREETWEAR / LIGHTNING RECALIBRATION
+   Grumble Bee first, lightning signature, 012 secondary.
+   ========================================================= */
+
+.lightning-rail{
+  background:#0a0a0a!important;
+  color:#fff!important;
+  border-bottom:2px solid var(--gb-yellow);
+}
+
+.lightning-rail b{
+  color:var(--gb-yellow);
+  font-size:15px;
+  filter:drop-shadow(0 0 7px rgba(246,189,18,.35));
+}
+
+.brand-lockup small{
+  color:#9e978c!important;
+}
+
+.brand-header .header-main{
+  position:relative;
+  background:
+    linear-gradient(112deg,transparent 0 63%,rgba(246,189,18,.07) 63% 66%,transparent 66%),
+    #090909!important;
+}
+
+.brand-header .header-main::after{
+  content:"⚡";
+  position:absolute;
+  left:calc(50% + 118px);
+  top:50%;
+  transform:translateY(-50%) rotate(8deg);
+  color:rgba(246,189,18,.12);
+  font-size:48px;
+  pointer-events:none;
+}
+
+.lightning-hero::after{
+  content:"⚡"!important;
+  right:2vw!important;
+  bottom:-18px!important;
+  color:rgba(246,189,18,.13)!important;
+  -webkit-text-stroke:0!important;
+  font-size:clamp(110px,19vw,290px)!important;
+  font-weight:900!important;
+  transform:rotate(8deg);
+}
+
+.brand-hero-lightning{
+  position:absolute;
+  z-index:4;
+  color:var(--gb-yellow);
+  line-height:1;
+  pointer-events:none;
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,.35));
+}
+
+.brand-hero-lightning.lightning-one{
+  left:6%;
+  top:10%;
+  font-size:clamp(46px,6vw,84px);
+  transform:rotate(-12deg);
+}
+
+.brand-hero-lightning.lightning-two{
+  right:6%;
+  bottom:9%;
+  font-size:clamp(34px,4vw,60px);
+  transform:rotate(14deg);
+}
+
+.brand-season-mark{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  width:max-content;
+  margin-bottom:22px;
+}
+
+.brand-season-mark img{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  object-fit:contain;
+  background:#f6f1e8;
+  border:2px solid #111;
+}
+
+.brand-season-mark span{
+  color:var(--gb-yellow);
+  font-size:42px;
+  filter:drop-shadow(3px 4px 0 #111);
+}
+
+.brand-season-tags span:last-child{
+  font-size:15px;
+  padding:3px 11px;
+  background:#111;
+  color:var(--gb-yellow);
+}
+
+.lightning-marquee{
+  transform:rotate(-.35deg) scale(1.01)!important;
+  border-top:0!important;
+  border-bottom:0!important;
+  box-shadow:
+    inset 0 3px 0 var(--gb-yellow),
+    inset 0 -3px 0 var(--gb-yellow);
+}
+
+.brand-featured-section::before{
+  content:"⚡"!important;
+  color:rgba(0,0,0,.026)!important;
+  font-size:clamp(120px,21vw,310px)!important;
+  transform:rotate(9deg);
+}
+
+.brand-card-lightning{
+  position:absolute;
+  right:12px;
+  top:12px;
+  z-index:3;
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  background:#0a0a0a;
+  color:var(--gb-yellow);
+  font-size:17px;
+  border:1px solid var(--gb-yellow);
+  transform:rotate(5deg);
+  box-shadow:5px 5px 0 rgba(246,189,18,.22);
+}
+
+.brand-campaign{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr)!important;
+  background:#090909!important;
+  min-height:620px;
+  position:relative;
+  overflow:hidden;
+}
+
+.brand-campaign-art{
+  position:relative;
+  min-height:620px;
+  overflow:hidden;
+}
+
+.brand-campaign-art img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:contrast(1.08);
+}
+
+.brand-campaign .campaign-copy{
+  display:flex!important;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start!important;
+  text-align:left!important;
+  padding:clamp(34px,6vw,86px)!important;
+}
+
+.brand-campaign .campaign-copy .eyebrow{
+  color:var(--gb-yellow);
+}
+
+.brand-campaign .campaign-copy h2{
+  font-size:clamp(52px,7vw,104px)!important;
+  line-height:.8!important;
+  letter-spacing:-.055em;
+  margin:18px 0 26px!important;
+}
+
+.brand-campaign .campaign-copy p{
+  color:#bdb5aa!important;
+  font-size:12px!important;
+  letter-spacing:.05em;
+}
+
+.campaign-lightning{
+  position:absolute;
+  color:var(--gb-yellow);
+  z-index:3;
+  filter:drop-shadow(4px 5px 0 #000);
+}
+
+.campaign-lightning-a{
+  left:6%;
+  bottom:10%;
+  font-size:72px;
+  transform:rotate(-12deg);
+}
+
+.campaign-lightning-b{
+  right:4%;
+  top:9%;
+  font-size:46px;
+  transform:rotate(14deg);
+}
+
+.footer-lightning-mark{
+  width:190px;
+  height:190px;
+  position:relative;
+}
+
+.footer-lightning-mark img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:50%;
+  background:#f4efe6;
+}
+
+.footer-lightning-mark span{
+  position:absolute;
+  right:-18px;
+  bottom:6px;
+  color:var(--gb-yellow);
+  font-size:66px;
+  filter:drop-shadow(4px 5px 0 #000);
+  transform:rotate(10deg);
+}
+
+.lightning-footer .brand-footer-art small{
+  color:#9b948a!important;
+}
+
+.lightning-footer .brand-footer-art h2{
+  color:#fff;
+}
+
+.lightning-footer .brand-footer-bottom b{
+  font-size:18px;
+  line-height:1;
+}
+
+.brand-checkout-head::after{
+  content:"⚡"!important;
+  right:4vw!important;
+  bottom:-38px!important;
+  font-size:190px!important;
+  color:rgba(0,0,0,.045)!important;
+  transform:rotate(9deg);
+}
+
+.brand-checkout-bolt{
+  position:absolute;
+  right:7vw;
+  top:50%;
+  transform:translateY(-50%) rotate(9deg);
+  color:var(--gb-yellow);
+  font-size:clamp(70px,10vw,140px);
+  line-height:1;
+  text-shadow:7px 7px 0 rgba(0,0,0,.08);
+}
+
+.checkout-motion-line{
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #b8afa1 0 18px,
+      transparent 18px 26px
+    )!important;
+}
+
+.delivery-journey{
+  position:relative;
+}
+
+.delivery-journey::after{
+  content:"⚡";
+  position:absolute;
+  right:16px;
+  top:10px;
+  font-size:76px;
+  color:rgba(246,189,18,.08);
+  transform:rotate(8deg);
+  pointer-events:none;
+}
+
+.delivery-journey-head small{
+  color:#aaa39a!important;
+}
+
+.delivery-step.active{
+  color:var(--gb-yellow)!important;
+}
+
+.brand-admin-side{
+  background:
+    linear-gradient(160deg,rgba(246,189,18,.05),transparent 26%),
+    #080808!important;
+}
+
+.brand-admin-side::before{
+  content:"⚡"!important;
+  left:auto!important;
+  right:-22px!important;
+  bottom:42px!important;
+  color:rgba(246,189,18,.035)!important;
+  font-size:170px!important;
+  transform:rotate(10deg)!important;
+}
+
+.admin-brand-symbol{
+  width:58px;
+  height:58px;
+  position:relative;
+  flex:0 0 auto;
+}
+
+.admin-brand-symbol img{
+  width:100%!important;
+  height:100%!important;
+  border-radius:50%;
+  object-fit:contain;
+  background:#f1ece2;
+}
+
+.admin-brand-symbol b{
+  position:absolute;
+  right:-8px;
+  bottom:-3px;
+  color:var(--gb-yellow);
+  font-size:25px;
+  filter:drop-shadow(2px 3px 0 #000);
+}
+
+.admin-side-pulse{
+  position:relative;
+}
+
+.admin-pulse-lightning{
+  margin-left:auto;
+  color:var(--gb-yellow);
+  font-size:17px;
+}
+
+.admin-side-bolt{
+  position:absolute;
+  color:rgba(246,189,18,.07);
+  pointer-events:none;
+}
+
+.admin-side-bolt-a{
+  top:34%;
+  right:14px;
+  font-size:54px;
+  transform:rotate(13deg);
+}
+
+.admin-side-bolt-b{
+  top:43%;
+  left:18px;
+  font-size:27px;
+  transform:rotate(-10deg);
+}
+
+.admin-topbar{
+  border-bottom:3px solid var(--gb-yellow)!important;
+}
+
+.admin-topbar-kicker{
+  color:#fff!important;
+}
+
+.admin-topbar-right b{
+  font-size:19px;
+}
+
+.lightning-admin-hero{
+  grid-template-columns:1fr minmax(320px,.8fr)!important;
+}
+
+.admin-dashboard-brand-art{
+  min-height:330px;
+  position:relative;
+  overflow:hidden;
+}
+
+.admin-dashboard-brand-art img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:contrast(1.1);
+}
+
+.admin-dashboard-brand-art span{
+  position:absolute;
+  color:var(--gb-yellow);
+  filter:drop-shadow(4px 5px 0 #000);
+}
+
+.admin-dashboard-brand-art span:nth-of-type(1){
+  left:8%;
+  top:13%;
+  font-size:64px;
+  transform:rotate(-10deg);
+}
+
+.admin-dashboard-brand-art span:nth-of-type(2){
+  right:7%;
+  bottom:10%;
+  font-size:42px;
+  transform:rotate(12deg);
+}
+
+.brand-admin-stats article{
+  border-top-color:#111!important;
+}
+
+.brand-admin-stats article:nth-child(2),
+.brand-admin-stats article:nth-child(4){
+  border-top-color:var(--gb-yellow)!important;
+}
+
+.admin-panel-head>span{
+  color:#111!important;
+  background:var(--gb-yellow)!important;
+}
+
+@media(max-width:980px){
+  .brand-campaign{
+    grid-template-columns:1fr!important;
+  }
+
+  .brand-campaign-art{
+    min-height:430px;
+  }
+
+  .lightning-admin-hero{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(max-width:760px){
+  .lightning-rail span:nth-of-type(3),
+  .lightning-rail span:nth-of-type(4){
+    display:none;
+  }
+
+  .brand-header .header-main::after{
+    display:none;
+  }
+
+  .brand-hero-lightning.lightning-one{
+    top:7%;
+    font-size:44px;
+  }
+
+  .brand-hero-lightning.lightning-two{
+    font-size:32px;
+  }
+
+  .brand-season-mark img{
+    width:58px;
+    height:58px;
+  }
+
+  .brand-season-mark span{
+    font-size:32px;
+  }
+
+  .brand-campaign-art{
+    min-height:350px;
+  }
+
+  .footer-lightning-mark{
+    width:110px;
+    height:110px;
+  }
+
+  .brand-checkout-bolt{
+    right:16px;
+    font-size:72px;
+    opacity:.65;
+  }
+}
