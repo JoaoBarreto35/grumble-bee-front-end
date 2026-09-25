@@ -9,6 +9,10 @@ import type {
   SeasonInput,
   SeasonStatus
 } from '../lib/types'
+import {
+  fromSeasonDateTimeLocal,
+  toSeasonDateTimeLocal
+} from '../lib/seasonDateTime'
 
 type SeasonImageSlot =
   | 'cover'
@@ -29,16 +33,6 @@ const empty: SeasonInput = {
   mobile_banner_image_url: null,
   sort_order: 0
 }
-
-const isoLocal = (value: string | null) =>
-  value
-    ? new Date(value).toISOString().slice(0, 16)
-    : ''
-
-const toIso = (value: string) =>
-  value
-    ? new Date(value).toISOString()
-    : null
 
 export function AdminSeasonsPage() {
   const {
@@ -382,12 +376,12 @@ export function AdminSeasonsPage() {
                 Início
                 <input
                   type="datetime-local"
-                  value={isoLocal(form.start_at)}
+                  value={toSeasonDateTimeLocal(form.start_at)}
                   onChange={e =>
                     setForm(v => ({
                       ...v,
                       start_at:
-                        toIso(e.target.value)
+                        fromSeasonDateTimeLocal(e.target.value)
                     }))
                   }
                 />
@@ -397,12 +391,12 @@ export function AdminSeasonsPage() {
                 Fim
                 <input
                   type="datetime-local"
-                  value={isoLocal(form.end_at)}
+                  value={toSeasonDateTimeLocal(form.end_at)}
                   onChange={e =>
                     setForm(v => ({
                       ...v,
                       end_at:
-                        toIso(e.target.value)
+                        fromSeasonDateTimeLocal(e.target.value)
                     }))
                   }
                 />

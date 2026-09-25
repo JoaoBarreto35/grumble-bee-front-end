@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ProductCard } from '../components/ProductCard'
 import { SeasonPicture } from '../components/SeasonPicture'
 import { useCatalog } from '../context/CatalogContext'
+import { pad, useCountdown } from '../hooks/useCountdown'
 import {
   isPublicProduct,
   isPublicSeason,
@@ -9,13 +10,25 @@ import {
 } from '../lib/catalog'
 
 export function HomePage() {
-  const { seasons, products, loading, error } = useCatalog()
+  const {
+    seasons,
+    products,
+    loading,
+    error
+  } = useCatalog()
 
-  const visibleSeasons = seasons.filter(isPublicSeason)
-  const current = visibleSeasons.find(s => s.status === 'current')
+  const visibleSeasons =
+    seasons.filter(isPublicSeason)
+
+  const current =
+    visibleSeasons.find(
+      season => season.status === 'current'
+    )
 
   const upcoming = visibleSeasons
-    .filter(s => s.status === 'upcoming')
+    .filter(
+      season => season.status === 'upcoming'
+    )
     .sort(
       (a, b) =>
         a.sort_order - b.sort_order
@@ -23,14 +36,23 @@ export function HomePage() {
     )[0]
 
   const archived = visibleSeasons
-    .filter(s => s.status === 'archived')
-    .sort((a, b) => b.number - a.number)[0]
+    .filter(
+      season => season.status === 'archived'
+    )
+    .sort(
+      (a, b) => b.number - a.number
+    )[0]
+
+  const upcomingCountdown =
+    useCountdown(
+      upcoming?.start_at ?? null
+    )
 
   const featured = products
     .filter(
-      p =>
-        p.is_featured
-        && isPublicProduct(p)
+      product =>
+        product.is_featured
+        && isPublicProduct(product)
     )
     .sort(
       (a, b) =>
@@ -56,14 +78,14 @@ export function HomePage() {
   }
 
   return (
-    <main>
+    <main className="home-v532">
       {current && (
         <section
-          className="home-season-banner brand-season-hero lightning-hero"
+          className="home-season-banner home-v532-hero"
           aria-label={`Temporada atual ${current.name}`}
         >
           <Link
-            className="home-season-image"
+            className="home-season-image home-v532-hero-image"
             to="/colecao-atual"
           >
             <SeasonPicture
@@ -74,24 +96,23 @@ export function HomePage() {
               alt={`Temporada ${current.name}`}
             />
 
-            <span className="brand-hero-lightning lightning-one">
+            <span
+              className="home-v532-bolt home-v532-bolt-one"
+              aria-hidden="true"
+            >
               ⚡
             </span>
 
-            <span className="brand-hero-lightning lightning-two">
-              ⚡
-            </span>
+            <div className="home-v532-image-label">
+              <span>GRUMBLE BEE</span>
+              <b>⚡</b>
+              <span>
+                TEMPORADA {String(current.number).padStart(2, '0')}
+              </span>
+            </div>
           </Link>
 
-          <div className="home-season-copy brand-season-copy">
-            <div className="brand-season-mark">
-              <img
-                src="/assets/logo-grumble-bee.png"
-                alt=""
-              />
-              <span>⚡</span>
-            </div>
-
+          <div className="home-season-copy home-v532-hero-copy">
             <div className="section-kicker">
               Temporada atual
             </div>
@@ -99,21 +120,28 @@ export function HomePage() {
             <h2>{current.name}</h2>
 
             <p>
-              {(current.description ?? current.theme).toUpperCase()}
+              {(current.description
+                ?? current.theme).toUpperCase()}
             </p>
 
-            <div className="brand-season-tags">
+            <div className="home-v532-drop-meta">
               <span>LIMITED DROP</span>
-              <span>GRUMBLE BEE</span>
-              <span>⚡</span>
+              <i>⚡</i>
+              <span>GRBBZZZZ</span>
             </div>
 
             <div className="actions">
-              <Link className="btn dark" to="/colecao-atual">
+              <Link
+                className="btn dark"
+                to="/colecao-atual"
+              >
                 Ver temporada
               </Link>
 
-              <Link className="btn" to="/produtos">
+              <Link
+                className="btn"
+                to="/produtos"
+              >
                 Ver peças
               </Link>
             </div>
@@ -121,23 +149,23 @@ export function HomePage() {
         </section>
       )}
 
-      <section className="brand-marquee lightning-marquee" aria-hidden="true">
+      <div
+        className="home-v532-marquee"
+        aria-hidden="true"
+      >
         <div>
-          GRUMBLE BEE
+          <span>GRUMBLE BEE</span>
           <b>⚡</b>
-          LIMITED DROPS
+          <span>LIMITED DROPS</span>
           <b>⚡</b>
-          STREETWEAR
+          <span>NO BASIC · JUST IDENTITY</span>
           <b>⚡</b>
-          GRBBZZZZ
+          <span>GRUMBLE BEE</span>
           <b>⚡</b>
-          GRUMBLE BEE
-          <b>⚡</b>
-          LIMITED DROPS
         </div>
-      </section>
+      </div>
 
-      <section className="section brand-featured-section">
+      <section className="section home-v532-featured">
         <div className="section-head">
           <div>
             <div className="section-kicker">
@@ -149,18 +177,23 @@ export function HomePage() {
             <h2>Produtos em destaque</h2>
           </div>
 
-          <Link className="text-link" to="/produtos">
+          <Link
+            className="text-link"
+            to="/produtos"
+          >
             Ver tudo
           </Link>
         </div>
 
         {featured.length > 0 ? (
-          <div className="grid">
+          <div className="home-v532-product-scroll">
             {featured.map(product => (
-              <ProductCard
+              <div
+                className="home-v532-product-slot"
                 key={product.id}
-                product={product}
-              />
+              >
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
         ) : (
@@ -170,22 +203,32 @@ export function HomePage() {
         )}
       </section>
 
-      <section className="campaign brand-campaign" id="editorial">
-        <div className="brand-campaign-art">
+      <section
+        className="campaign home-v532-editorial"
+        id="editorial"
+      >
+        <div className="home-v532-editorial-art">
           <img
-            src="/assets/brand-localz-graffiti.png"
+            src="/assets/home-editorial-grumble-bee.png"
             alt="Editorial Grumble Bee"
           />
 
-          <span className="campaign-lightning campaign-lightning-a">⚡</span>
-          <span className="campaign-lightning campaign-lightning-b">⚡</span>
+          <span
+            className="home-v532-bolt editorial-bolt"
+            aria-hidden="true"
+          >
+            ⚡
+          </span>
         </div>
 
         <div className="campaign-copy">
-          <div className="eyebrow">Editorial</div>
+          <div className="eyebrow">
+            Editorial
+          </div>
 
           <h2>
-            NO BASIC<br />
+            NO BASIC
+            <br />
             JUST IDENTITY
           </h2>
 
@@ -194,14 +237,17 @@ export function HomePage() {
           </p>
 
           <div className="actions">
-            <Link className="btn light" to="/produtos">
+            <Link
+              className="btn light"
+              to="/produtos"
+            >
               Ver produtos
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section home-v532-collections">
         <div className="section-head">
           <div>
             <div className="section-kicker">
@@ -209,53 +255,28 @@ export function HomePage() {
             </div>
 
             <h2>
-              Agora, antes<br />
+              Agora, antes
+              <br />
               e depois.
             </h2>
           </div>
 
-          <Link className="text-link" to="/colecoes">
+          <Link
+            className="text-link"
+            to="/colecoes"
+          >
             Ver coleções
           </Link>
         </div>
 
-        <div className="collection-stack brand-collection-stack">
-          <Link
-            className="collection-tile art-archive"
-            to="/colecao-arquivo"
-            style={
-              archived
-                ? {
-                    backgroundImage:
-                      `linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url("${seasonCardImage(archived, '/assets/bomber-preta.jpg')}")`
-                  }
-                : undefined
-            }
-          >
-            <div className="collection-tile-content">
-              <span className="status">
-                Arquivo
-              </span>
-
-              <h2>
-                {archived?.name
-                  ?? 'As que já passaram.'}
-              </h2>
-
-              <p>
-                {archived?.description
-                  ?? 'Peças encerradas continuam na história da marca — sem reposição.'}
-              </p>
-            </div>
-          </Link>
-
+        <div className="collection-stack home-v532-collection-stack">
           {current && (
             <Link
-              className="collection-tile art-anime-image"
+              className="collection-tile art-anime-image home-v532-collection-current"
               to="/colecao-atual"
               style={{
                 backgroundImage:
-                  `linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.08)),url("${seasonCardImage(current, '/assets/colecao-anime-landscape.jpg')}")`
+                  `linear-gradient(90deg,rgba(0,0,0,.67),rgba(0,0,0,.10)),url("${seasonCardImage(current, '/assets/colecao-anime-landscape.jpg')}")`
               }}
             >
               <div className="collection-tile-content">
@@ -276,11 +297,11 @@ export function HomePage() {
 
           {upcoming && (
             <Link
-              className="collection-tile art-horror-image"
+              className="collection-tile art-horror-image home-v532-collection-upcoming"
               to="/em-breve"
               style={{
                 backgroundImage:
-                  `linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.62)),url("${seasonCardImage(upcoming, '/assets/colecao-horror.jpg')}")`
+                  `linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.72)),url("${seasonCardImage(upcoming, '/assets/colecao-horror.jpg')}")`
               }}
             >
               <div className="collection-tile-content">
@@ -298,9 +319,68 @@ export function HomePage() {
                   {upcoming.description
                     ?? upcoming.theme}
                 </p>
+
+                {upcoming.start_at
+                  && !upcomingCountdown.done && (
+                    <div className="home-v532-upcoming-timer">
+                      <div>
+                        <strong>
+                          {pad(upcomingCountdown.days)}
+                        </strong>
+                        <span>dias</span>
+                      </div>
+
+                      <i>:</i>
+
+                      <div>
+                        <strong>
+                          {pad(upcomingCountdown.hours)}
+                        </strong>
+                        <span>hrs</span>
+                      </div>
+
+                      <i>:</i>
+
+                      <div>
+                        <strong>
+                          {pad(upcomingCountdown.minutes)}
+                        </strong>
+                        <span>min</span>
+                      </div>
+                    </div>
+                  )}
               </div>
             </Link>
           )}
+
+          <Link
+            className="collection-tile art-archive home-v532-collection-archive"
+            to="/colecao-arquivo"
+            style={
+              archived
+                ? {
+                    backgroundImage:
+                      `linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.72)),url("${seasonCardImage(archived, '/assets/bomber-preta.jpg')}")`
+                  }
+                : undefined
+            }
+          >
+            <div className="collection-tile-content">
+              <span className="status">
+                Arquivo
+              </span>
+
+              <h2>
+                {archived?.name
+                  ?? 'As que já passaram.'}
+              </h2>
+
+              <p>
+                {archived?.description
+                  ?? 'Peças encerradas continuam na história da marca — sem reposição.'}
+              </p>
+            </div>
+          </Link>
         </div>
       </section>
     </main>

@@ -13,7 +13,6 @@ import {
 import { useCart } from '../context/CartContext'
 import { useCustomerAuth } from '../context/CustomerAuthContext'
 import { MercadoPagoCardPayment } from '../components/MercadoPagoCardPayment'
-import { CheckoutMotionStrip } from '../components/CheckoutMotionStrip'
 import { remoteApi } from '../lib/api'
 import {
   formatCep,
@@ -607,8 +606,7 @@ export function CheckoutPage() {
 
   return (
     <main>
-      <section className="page-hero checkout-head brand-checkout-head">
-        <div className="brand-checkout-bolt" aria-hidden="true">⚡</div>
+      <section className="page-hero checkout-head">
         <div className="breadcrumb">
           <Link to="/carrinho">Carrinho</Link> {' > '} Checkout
         </div>
@@ -618,10 +616,8 @@ export function CheckoutPage() {
         </p>
       </section>
 
-      <CheckoutMotionStrip stage="payment" />
-
-      <section className="checkout-grid checkout-real brand-checkout-grid">
-        <div className="checkout-form brand-checkout-form">
+      <section className="checkout-grid checkout-real">
+        <div className="checkout-form">
           {!logged && (
             <div className="checkout-login-note">
               <span>Já tem conta?</span>
@@ -891,15 +887,7 @@ export function CheckoutPage() {
                   />
                 )}
                 <strong className="pix-total">{money(displayedTotal)}</strong>
-                <div className="pix-waiting brand-pix-waiting">
-                  <span className="pix-waiting-bee">
-                    <img src="/assets/logo-grumble-bee.png" alt="" />
-                  </span>
-                  <div>
-                    <strong>Aguardando o Mercado Pago</strong>
-                    <small>Pagou? A abelha atualiza sozinha assim que o webhook confirmar.</small>
-                  </div>
-                </div>
+                <p className="pix-waiting">Aguardando confirmação do pagamento…</p>
                 {pixPayment.qr_code && (
                   <>
                     <textarea
@@ -971,14 +959,8 @@ export function CheckoutPage() {
           {message && <p className="form-message error">{message}</p>}
         </div>
 
-        <aside className="cart-summary checkout-summary brand-checkout-summary">
-          <div className="brand-checkout-summary-head">
-            <div>
-              <small>SEU DROP</small>
-              <h3>Seu pedido</h3>
-            </div>
-            <img src="/assets/logo-grumble-bee.png" alt="" />
-          </div>
+        <aside className="cart-summary checkout-summary">
+          <h3>Seu pedido</h3>
           {detailed.map(({ item, product, variant }) =>
             product && variant ? (
               <div className="checkout-product" key={`${item.id}-${variant.id}`}>

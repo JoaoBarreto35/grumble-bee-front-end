@@ -1,4 +1,9 @@
-import { useEffect, useMemo, useState } from 'react'
+import {
+  useEffect,
+  useMemo,
+  useState
+} from 'react'
+import { parseSeasonDate } from '../lib/seasonDateTime'
 
 export type CountdownValue = {
   days: number
@@ -16,26 +21,42 @@ const EMPTY_COUNTDOWN: CountdownValue = {
   done: false
 }
 
-function calculate(targetISO: string | null): CountdownValue {
+function calculate(
+  targetISO: string | null
+): CountdownValue {
   if (!targetISO) {
     return EMPTY_COUNTDOWN
   }
 
-  const now = Date.now()
-  const target = new Date(targetISO).getTime()
+  const targetDate = parseSeasonDate(targetISO)
 
-  if (Number.isNaN(target)) {
+  if (!targetDate) {
     return EMPTY_COUNTDOWN
   }
 
+  const now = Date.now()
+  const target = targetDate.getTime()
+
   let diff = Math.max(0, target - now)
-  const days = Math.floor(diff / 86_400_000)
+
+  const days = Math.floor(
+    diff / 86_400_000
+  )
   diff -= days * 86_400_000
-  const hours = Math.floor(diff / 3_600_000)
+
+  const hours = Math.floor(
+    diff / 3_600_000
+  )
   diff -= hours * 3_600_000
-  const minutes = Math.floor(diff / 60_000)
+
+  const minutes = Math.floor(
+    diff / 60_000
+  )
   diff -= minutes * 60_000
-  const seconds = Math.floor(diff / 1_000)
+
+  const seconds = Math.floor(
+    diff / 1_000
+  )
 
   return {
     days,
@@ -71,7 +92,8 @@ export function useCountdown(
       intervalMs
     )
 
-    return () => window.clearInterval(timer)
+    return () =>
+      window.clearInterval(timer)
   }, [stableTarget, intervalMs])
 
   return value

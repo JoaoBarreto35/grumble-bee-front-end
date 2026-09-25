@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { money } from '../context/CatalogContext'
 import { statusLabel } from '../lib/orderLabels'
-import { DeliveryJourney } from './DeliveryJourney'
 import type { Order } from '../lib/types'
 
 function dateTime(value: string | null) {
@@ -25,8 +24,6 @@ export function OrderDetailView({ order }: { order: Order }) {
           <span><b>Envio</b>{statusLabel('shipping', order.shipping_status)}</span>
         </div>
       </div>
-
-      <DeliveryJourney status={order.shipping_status} />
 
       {order.tracking_code && (
         <div className="tracking-card">
