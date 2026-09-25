@@ -78,68 +78,51 @@ export function HomePage() {
   }
 
   return (
-    <main className="home-v532">
+    <main className="gb-home-clean">
       {current && (
         <section
-          className="home-season-banner home-v532-hero"
+          className="gb-home-hero"
           aria-label={`Temporada atual ${current.name}`}
         >
-          <Link
-            className="home-season-image home-v532-hero-image"
-            to="/colecao-atual"
+          <SeasonPicture
+            season={current}
+            className="gb-home-hero-picture"
+            fallbackDesktop="/assets/colecao-anime-landscape.jpg"
+            fallbackMobile="/assets/colecao-anime.jpg"
+            alt={`Temporada ${current.name}`}
+          />
+
+          <div className="gb-home-hero-shade" />
+
+          <span
+            className="gb-home-hero-bolt"
+            aria-hidden="true"
           >
-            <SeasonPicture
-              season={current}
-              className="home-season-picture"
-              fallbackDesktop="/assets/colecao-anime-landscape.jpg"
-              fallbackMobile="/assets/colecao-anime.jpg"
-              alt={`Temporada ${current.name}`}
-            />
+            ⚡
+          </span>
 
-            <span
-              className="home-v532-bolt home-v532-bolt-one"
-              aria-hidden="true"
-            >
-              ⚡
-            </span>
-
-            <div className="home-v532-image-label">
-              <span>GRUMBLE BEE</span>
-              <b>⚡</b>
-              <span>
-                TEMPORADA {String(current.number).padStart(2, '0')}
-              </span>
-            </div>
-          </Link>
-
-          <div className="home-season-copy home-v532-hero-copy">
-            <div className="section-kicker">
-              Temporada atual
+          <div className="gb-home-hero-copy">
+            <div className="gb-home-hero-kicker">
+              Temporada atual · {String(current.number).padStart(2, '0')}
             </div>
 
-            <h2>{current.name}</h2>
+            <h1>{current.name}</h1>
 
             <p>
-              {(current.description
-                ?? current.theme).toUpperCase()}
+              {current.description
+                ?? current.theme}
             </p>
 
-            <div className="home-v532-drop-meta">
-              <span>LIMITED DROP</span>
-              <i>⚡</i>
-              <span>GRBBZZZZ</span>
-            </div>
-
-            <div className="actions">
+            <div className="gb-home-hero-actions">
               <Link
-                className="btn dark"
+                className="gb-home-primary"
                 to="/colecao-atual"
               >
                 Ver temporada
               </Link>
 
               <Link
-                className="btn"
+                className="gb-home-secondary"
                 to="/produtos"
               >
                 Ver peças
@@ -149,47 +132,28 @@ export function HomePage() {
         </section>
       )}
 
-      <div
-        className="home-v532-marquee"
-        aria-hidden="true"
-      >
-        <div>
-          <span>GRUMBLE BEE</span>
-          <b>⚡</b>
-          <span>LIMITED DROPS</span>
-          <b>⚡</b>
-          <span>NO BASIC · JUST IDENTITY</span>
-          <b>⚡</b>
-          <span>GRUMBLE BEE</span>
-          <b>⚡</b>
-        </div>
-      </div>
-
-      <section className="section home-v532-featured">
-        <div className="section-head">
+      <section className="gb-home-products">
+        <div className="gb-home-section-head">
           <div>
-            <div className="section-kicker">
+            <small>
               {current
                 ? `Temporada ${String(current.number).padStart(2, '0')}`
                 : 'Grumble Bee'}
-            </div>
+            </small>
 
             <h2>Produtos em destaque</h2>
           </div>
 
-          <Link
-            className="text-link"
-            to="/produtos"
-          >
+          <Link to="/produtos">
             Ver tudo
           </Link>
         </div>
 
         {featured.length > 0 ? (
-          <div className="home-v532-product-scroll">
+          <div className="gb-home-product-track">
             {featured.map(product => (
               <div
-                className="home-v532-product-slot"
+                className="gb-home-product-card"
                 key={product.id}
               >
                 <ProductCard product={product} />
@@ -204,55 +168,47 @@ export function HomePage() {
       </section>
 
       <section
-        className="campaign home-v532-editorial"
+        className="gb-home-editorial"
         id="editorial"
       >
-        <div className="home-v532-editorial-art">
-          <img
-            src="/assets/home-editorial-grumble-bee.png"
-            alt="Editorial Grumble Bee"
-          />
-
-          <span
-            className="home-v532-bolt editorial-bolt"
-            aria-hidden="true"
-          >
-            ⚡
-          </span>
-        </div>
-
-        <div className="campaign-copy">
-          <div className="eyebrow">
-            Editorial
-          </div>
+        <div className="gb-home-editorial-copy">
+          <small>Editorial</small>
 
           <h2>
-            NO BASIC
+            NO BASIC.
             <br />
-            JUST IDENTITY
+            JUST IDENTITY.
           </h2>
 
           <p>
             Limited drops, custom pieces, only 012
           </p>
 
-          <div className="actions">
-            <Link
-              className="btn light"
-              to="/produtos"
-            >
-              Ver produtos
-            </Link>
-          </div>
+          <Link
+            className="gb-home-editorial-cta"
+            to="/produtos"
+          >
+            Ver produtos
+          </Link>
+        </div>
+
+        <div
+          className="gb-home-editorial-brand"
+          aria-hidden="true"
+        >
+          <img
+            src="/assets/logo-grumble-bee.png"
+            alt=""
+          />
+
+          <span>⚡</span>
         </div>
       </section>
 
-      <section className="section home-v532-collections">
-        <div className="section-head">
+      <section className="gb-home-collections">
+        <div className="gb-home-section-head">
           <div>
-            <div className="section-kicker">
-              Coleções
-            </div>
+            <small>Coleções</small>
 
             <h2>
               Agora, antes
@@ -261,59 +217,52 @@ export function HomePage() {
             </h2>
           </div>
 
-          <Link
-            className="text-link"
-            to="/colecoes"
-          >
+          <Link to="/colecoes">
             Ver coleções
           </Link>
         </div>
 
-        <div className="collection-stack home-v532-collection-stack">
+        <div className="gb-home-collection-list">
           {current && (
             <Link
-              className="collection-tile art-anime-image home-v532-collection-current"
+              className="gb-home-collection-card gb-current-card"
               to="/colecao-atual"
               style={{
                 backgroundImage:
-                  `linear-gradient(90deg,rgba(0,0,0,.67),rgba(0,0,0,.10)),url("${seasonCardImage(current, '/assets/colecao-anime-landscape.jpg')}")`
+                  `linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,.05) 70%),url("${seasonCardImage(current, '/assets/colecao-anime-landscape.jpg')}")`
               }}
             >
-              <div className="collection-tile-content">
-                <span className="status">
+              <div>
+                <small>
                   Agora · Temporada {String(current.number).padStart(2, '0')}
-                </span>
+                </small>
 
-                <h2>
-                  {current.name}
-                  <br />
-                  Drop.
-                </h2>
+                <h3>
+                  {current.name} Drop.
+                </h3>
 
                 <p>{current.theme}</p>
               </div>
+
+              <span aria-hidden="true">⚡</span>
             </Link>
           )}
 
           {upcoming && (
             <Link
-              className="collection-tile art-horror-image home-v532-collection-upcoming"
+              className="gb-home-collection-card gb-upcoming-card"
               to="/em-breve"
               style={{
                 backgroundImage:
-                  `linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.72)),url("${seasonCardImage(upcoming, '/assets/colecao-horror.jpg')}")`
+                  `linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,.16) 72%),url("${seasonCardImage(upcoming, '/assets/colecao-horror.jpg')}")`
               }}
             >
-              <div className="collection-tile-content">
-                <span className="status">
-                  Próxima temporada
-                </span>
+              <div>
+                <small>Próxima temporada</small>
 
-                <h2>
+                <h3>
                   {upcoming.name}
-                  <br />
-                  is coming.
-                </h2>
+                </h3>
 
                 <p>
                   {upcoming.description
@@ -322,12 +271,12 @@ export function HomePage() {
 
                 {upcoming.start_at
                   && !upcomingCountdown.done && (
-                    <div className="home-v532-upcoming-timer">
+                    <div className="gb-home-upcoming-count">
                       <div>
                         <strong>
                           {pad(upcomingCountdown.days)}
                         </strong>
-                        <span>dias</span>
+                        <span>Dias</span>
                       </div>
 
                       <i>:</i>
@@ -336,7 +285,7 @@ export function HomePage() {
                         <strong>
                           {pad(upcomingCountdown.hours)}
                         </strong>
-                        <span>hrs</span>
+                        <span>Horas</span>
                       </div>
 
                       <i>:</i>
@@ -345,7 +294,7 @@ export function HomePage() {
                         <strong>
                           {pad(upcomingCountdown.minutes)}
                         </strong>
-                        <span>min</span>
+                        <span>Min</span>
                       </div>
                     </div>
                   )}
@@ -354,32 +303,24 @@ export function HomePage() {
           )}
 
           <Link
-            className="collection-tile art-archive home-v532-collection-archive"
+            className="gb-home-archive-card"
             to="/colecao-arquivo"
-            style={
-              archived
-                ? {
-                    backgroundImage:
-                      `linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.72)),url("${seasonCardImage(archived, '/assets/bomber-preta.jpg')}")`
-                  }
-                : undefined
-            }
           >
-            <div className="collection-tile-content">
-              <span className="status">
-                Arquivo
-              </span>
+            <div>
+              <small>Arquivo</small>
 
-              <h2>
+              <h3>
                 {archived?.name
                   ?? 'As que já passaram.'}
-              </h2>
+              </h3>
 
               <p>
                 {archived?.description
                   ?? 'Peças encerradas continuam na história da marca — sem reposição.'}
               </p>
             </div>
+
+            <span>ESGOTADO</span>
           </Link>
         </div>
       </section>

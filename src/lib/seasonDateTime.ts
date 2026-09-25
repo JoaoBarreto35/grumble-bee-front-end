@@ -1,7 +1,7 @@
 const STORE_TIME_ZONE = 'America/Sao_Paulo'
 const STORE_UTC_OFFSET = '-03:00'
 
-function hasExplicitTimezone(value: string) {
+function hasTimezone(value: string) {
   return /(?:Z|[+-]\d{2}:\d{2})$/i.test(value)
 }
 
@@ -15,9 +15,9 @@ export function parseSeasonDate(
 
   let normalized = raw
 
-  // If the API ever returns a naive timestamp, interpret it as the
-  // store's wall-clock time instead of letting each browser guess.
-  if (!hasExplicitTimezone(normalized)) {
+  // PostgreSQL/API should normally return an explicit timezone.
+  // If an older record is naive, treat it as store wall-clock time.
+  if (!hasTimezone(normalized)) {
     if (/^\d{4}-\d{2}-\d{2}$/.test(normalized)) {
       normalized = `${normalized}T00:00:00${STORE_UTC_OFFSET}`
     } else if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(normalized)) {
@@ -27,14 +27,14 @@ export function parseSeasonDate(
     }
   }
 
-  const date = new Date(normalized)
+  const parsed = new Date(normalized)
 
-  return Number.isNaN(date.getTime())
+  return Number.isNaN(parsed.getTime())
     ? null
-    : date
+    : parsed
 }
 
-function saoPauloParts(date: Date) {
+function storeParts(date: Date) {
   const formatter = new Intl.DateTimeFormat(
     'en-CA',
     {
@@ -48,29 +48,21 @@ function saoPauloParts(date: Date) {
     }
   )
 
-  const parts = Object.fromEntries(
+  return Object.fromEntries(
     formatter
       .formatToParts(date)
       .filter(part => part.type !== 'literal')
       .map(part => [part.type, part.value])
-  )
-
-  return {
-    year: parts.year,
-    month: parts.month,
-    day: parts.day,
-    hour: parts.hour,
-    minute: parts.minute
-  }
+  ) as Record<string, string>
 }
 
 export function toSeasonDateTimeLocal(
   value: string | null | undefined
 ) {
-  const date = parseSeasonDate(value)
-  if (!date) return ''
+  const parsed = parseSeasonDate(value)
+  if (!parsed) return ''
 
-  const parts = saoPauloParts(date)
+  const parts = storeParts(parsed)
 
   return (
     `${parts.year}-${parts.month}-${parts.day}`
@@ -83,20 +75,24 @@ export function fromSeasonDateTimeLocal(
 ): string | null {
   if (!value) return null
 
-  // São Paulo has used UTC-03:00 since DST was abolished in 2019.
-  // datetime-local has no timezone, so make the store timezone explicit.
-  const date = new Date(`${value}:00${STORE_UTC_OFFSET}`)
+  // Brazil has no DST in 2026; the store operates on UTC-03.
+  const parsed = new Date(
+    `${value}:00${STORE_UTC_OFFSET}`
+  )
 
-  return Number.isNaN(date.getTime())
+  return Number.isNaN(parsed.getTime())
     ? null
-    : date.toISOString()
+    : parsed.toISOString()
 }
 
 export function formatSeasonDateTime(
   value: string | null | undefined
 ) {
-  const date = parseSeasonDate(value)
-  if (!date) return 'Data a definir'
+  const parsed = parseSeasonDate(value)
+
+  if (!parsed) {
+    return 'Data a definir'
+  }
 
   return new Intl.DateTimeFormat(
     'pt-BR',
@@ -108,5 +104,5 @@ export function formatSeasonDateTime(
       hour: '2-digit',
       minute: '2-digit'
     }
-  ).format(date)
+  ).format(parsed)
 }

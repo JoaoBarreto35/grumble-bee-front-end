@@ -1,0 +1,616 @@
+
+/*
+  V5.3.3 — HOME MOBILE CLEAN
+  Based directly on V5.3.1.
+  Only Home is visually changed.
+*/
+
+.gb-home-clean{
+  --gbh-yellow:#f2bd1d;
+  --gbh-black:#0d0d0d;
+  --gbh-paper:#f3f0e8;
+  --gbh-line:rgba(17,17,17,.14);
+  background:var(--gbh-paper);
+}
+
+/* On HOME mobile, the hamburger already owns navigation.
+   Remove the overflowing desktop category strip. */
+@media(max-width:899px){
+  .app-shell.home-page>.header .category-strip{
+    display:none;
+  }
+
+  .app-shell.home-page>.header{
+    top:34px!important;
+  }
+
+  .app-shell.home-page>.header .header-main{
+    height:64px;
+    padding-inline:12px;
+  }
+
+  .app-shell.home-page>.header .brand-logo-circle{
+    width:42px;
+    height:42px;
+  }
+
+  .app-shell.home-page>.header .brand-logo-circle img{
+    width:34px;
+    height:34px;
+  }
+
+  .app-shell.home-page>.header .brand>span:last-child{
+    font-size:18px;
+  }
+
+  .app-shell.home-page>.home-counter-link{
+    font-size:8px!important;
+    letter-spacing:.09em!important;
+  }
+}
+
+/* =========================================================
+   HERO — one single composition, no duplicated copy section
+   ========================================================= */
+.gb-home-hero{
+  position:relative;
+  min-height:clamp(520px,132vw,650px);
+  background:#111;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.gb-home-hero-picture{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+.gb-home-hero-picture img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+}
+
+.gb-home-hero-shade{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.88) 0,
+      rgba(0,0,0,.54) 31%,
+      rgba(0,0,0,.10) 62%,
+      rgba(0,0,0,.02) 100%
+    );
+}
+
+.gb-home-hero-bolt{
+  position:absolute;
+  top:18px;
+  right:15px;
+  z-index:2;
+  color:var(--gbh-yellow);
+  font-size:34px;
+  line-height:1;
+  transform:rotate(8deg);
+  text-shadow:2px 3px 0 rgba(0,0,0,.55);
+}
+
+.gb-home-hero-copy{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:3;
+  padding:24px 16px 25px;
+  color:#fff;
+}
+
+.gb-home-hero-kicker{
+  width:max-content;
+  margin-bottom:9px;
+  padding:6px 8px;
+  background:rgba(248,245,237,.94);
+  color:#111;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.gb-home-hero-copy h1{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(48px,16vw,67px);
+  font-weight:400;
+  line-height:.84;
+  letter-spacing:-.055em;
+}
+
+.gb-home-hero-copy p{
+  max-width:310px;
+  margin-top:10px;
+  color:rgba(255,255,255,.78);
+  font-size:11px;
+  line-height:1.5;
+}
+
+.gb-home-hero-actions{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-top:17px;
+}
+
+.gb-home-primary,
+.gb-home-secondary{
+  min-height:43px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 14px;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.gb-home-primary{
+  background:var(--gbh-yellow);
+  color:#111;
+  border:1px solid var(--gbh-yellow);
+}
+
+.gb-home-secondary{
+  color:#fff;
+  border:1px solid rgba(255,255,255,.72);
+}
+
+/* =========================================================
+   SHARED SECTION HEADER
+   ========================================================= */
+.gb-home-section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.gb-home-section-head small{
+  display:block;
+  margin-bottom:7px;
+  color:#746e64;
+  font-size:8px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.gb-home-section-head h2{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(34px,10vw,44px);
+  font-weight:400;
+  line-height:.9;
+  letter-spacing:-.045em;
+}
+
+.gb-home-section-head>a{
+  flex:0 0 auto;
+  margin-bottom:3px;
+  border-bottom:1px solid currentColor;
+  padding-bottom:2px;
+  font-size:8px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+/* =========================================================
+   FEATURED — card sized for touch, next card visible
+   ========================================================= */
+.gb-home-products{
+  padding:42px 15px 47px;
+}
+
+.gb-home-product-track{
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:min(68vw,258px);
+  gap:11px;
+  overflow-x:auto;
+  margin:20px -15px 0;
+  padding:0 15px 8px;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  overscroll-behavior-inline:contain;
+}
+
+.gb-home-product-track::-webkit-scrollbar{
+  display:none;
+}
+
+.gb-home-product-card{
+  min-width:0;
+  scroll-snap-align:start;
+}
+
+.gb-home-product-card .product-image img{
+  aspect-ratio:.80;
+}
+
+.gb-home-product-card .badge{
+  padding:5px 6px;
+  font-size:7px;
+}
+
+.gb-home-product-card .card-body{
+  padding-top:9px;
+}
+
+.gb-home-product-card .card-row{
+  gap:3px;
+}
+
+.gb-home-product-card .card-row span{
+  font-size:9px;
+}
+
+.gb-home-product-card .card-row strong{
+  font-size:11px;
+}
+
+/* =========================================================
+   EDITORIAL — compact, brand-led, no giant Localz art
+   ========================================================= */
+.gb-home-editorial{
+  position:relative;
+  min-height:390px;
+  overflow:hidden;
+  background:#0c0c0c;
+  color:#fff;
+  border-block:3px solid var(--gbh-yellow);
+}
+
+.gb-home-editorial-copy{
+  position:relative;
+  z-index:2;
+  width:74%;
+  padding:39px 16px 45px;
+}
+
+.gb-home-editorial-copy small{
+  color:var(--gbh-yellow);
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.gb-home-editorial-copy h2{
+  margin-top:10px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(43px,12vw,58px);
+  font-weight:400;
+  line-height:.86;
+  letter-spacing:-.045em;
+}
+
+.gb-home-editorial-copy p{
+  max-width:220px;
+  margin-top:15px;
+  color:#aaa49c;
+  font-size:9px;
+  line-height:1.5;
+}
+
+.gb-home-editorial-cta{
+  display:inline-flex;
+  min-height:42px;
+  align-items:center;
+  margin-top:23px;
+  padding:0 14px;
+  background:var(--gbh-yellow);
+  color:#111;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+
+.gb-home-editorial-brand{
+  position:absolute;
+  right:-42px;
+  bottom:-34px;
+  width:210px;
+  height:210px;
+  opacity:.92;
+}
+
+.gb-home-editorial-brand::before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(242,189,29,.26);
+  border-radius:50%;
+}
+
+.gb-home-editorial-brand img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:50%;
+  background:#eee9de;
+}
+
+.gb-home-editorial-brand span{
+  position:absolute;
+  left:-8px;
+  top:16px;
+  color:var(--gbh-yellow);
+  font-size:42px;
+  transform:rotate(-8deg);
+  text-shadow:3px 4px 0 #000;
+}
+
+/* =========================================================
+   COLLECTIONS — compact cards, no random corner squares
+   ========================================================= */
+.gb-home-collections{
+  padding:46px 15px 62px;
+}
+
+.gb-home-collection-list{
+  display:grid;
+  gap:10px;
+  margin-top:20px;
+}
+
+.gb-home-collection-card{
+  position:relative;
+  min-height:278px;
+  display:flex;
+  align-items:end;
+  overflow:hidden;
+  background-color:#111;
+  background-position:center;
+  background-size:cover;
+  color:#fff;
+}
+
+.gb-home-collection-card>div{
+  position:relative;
+  z-index:2;
+  width:100%;
+  padding:19px 16px 20px;
+}
+
+.gb-home-collection-card small,
+.gb-home-archive-card small{
+  display:block;
+  color:var(--gbh-yellow);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.gb-home-collection-card h3,
+.gb-home-archive-card h3{
+  max-width:280px;
+  margin-top:6px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(34px,10vw,44px);
+  font-weight:400;
+  line-height:.88;
+  letter-spacing:-.04em;
+}
+
+.gb-home-collection-card p,
+.gb-home-archive-card p{
+  max-width:285px;
+  margin-top:8px;
+  color:rgba(255,255,255,.75);
+  font-size:9px;
+  line-height:1.45;
+}
+
+.gb-home-current-card>span{
+  position:absolute;
+  top:13px;
+  right:14px;
+  z-index:2;
+  color:var(--gbh-yellow);
+  font-size:27px;
+  transform:rotate(7deg);
+  text-shadow:2px 3px 0 rgba(0,0,0,.58);
+}
+
+.gb-home-upcoming-count{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  width:max-content;
+  margin-top:14px;
+  padding:8px 10px;
+  background:rgba(8,8,8,.88);
+  border-left:3px solid var(--gbh-yellow);
+}
+
+.gb-home-upcoming-count div{
+  display:grid;
+  min-width:31px;
+  gap:1px;
+  text-align:center;
+}
+
+.gb-home-upcoming-count strong{
+  color:#fff;
+  font-size:14px;
+  line-height:1;
+}
+
+.gb-home-upcoming-count span{
+  color:#99938a;
+  font-size:6px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.gb-home-upcoming-count i{
+  color:var(--gbh-yellow);
+  font-style:normal;
+}
+
+.gb-home-archive-card{
+  min-height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:24px 17px;
+  background:#e7e1d6;
+  border:1px solid rgba(17,17,17,.14);
+}
+
+.gb-home-archive-card small{
+  color:#756f65;
+}
+
+.gb-home-archive-card h3{
+  color:#111;
+  font-size:clamp(30px,9vw,39px);
+}
+
+.gb-home-archive-card p{
+  color:#716b61;
+}
+
+.gb-home-archive-card>span{
+  flex:0 0 auto;
+  border:1px solid #111;
+  padding:7px 8px;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.1em;
+  transform:rotate(2deg);
+}
+
+/* Upcoming page helper text */
+.gb-upcoming-timezone,
+.gb-upcoming-done{
+  margin-top:13px;
+  color:#716b61;
+  font-size:9px;
+}
+
+.gb-upcoming-timezone{
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+
+/* 360px safeguard */
+@media(max-width:370px){
+  .gb-home-hero{
+    min-height:520px;
+  }
+
+  .gb-home-hero-copy{
+    padding-inline:13px;
+  }
+
+  .gb-home-products,
+  .gb-home-collections{
+    padding-left:13px;
+    padding-right:13px;
+  }
+
+  .gb-home-product-track{
+    grid-auto-columns:72vw;
+    margin-inline:-13px;
+    padding-inline:13px;
+  }
+
+  .gb-home-editorial-copy{
+    width:78%;
+    padding-left:14px;
+  }
+
+  .gb-home-editorial-brand{
+    width:190px;
+    height:190px;
+  }
+}
+
+/* Desktop is only a restrained adaptation.
+   Mobile remains the source design for this validation round. */
+@media(min-width:900px){
+  .gb-home-hero{
+    min-height:690px;
+  }
+
+  .gb-home-hero-copy{
+    padding:0 4vw 50px;
+  }
+
+  .gb-home-hero-copy h1{
+    font-size:80px;
+  }
+
+  .gb-home-hero-copy p{
+    max-width:430px;
+    font-size:13px;
+  }
+
+  .gb-home-products,
+  .gb-home-collections{
+    padding-left:4vw;
+    padding-right:4vw;
+  }
+
+  .gb-home-product-track{
+    grid-auto-flow:initial;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:15px;
+    overflow:visible;
+    margin-inline:0;
+    padding-inline:0;
+  }
+
+  .gb-home-editorial{
+    min-height:520px;
+  }
+
+  .gb-home-editorial-copy{
+    width:58%;
+    padding:70px 4vw;
+  }
+
+  .gb-home-editorial-copy h2{
+    font-size:74px;
+  }
+
+  .gb-home-editorial-brand{
+    right:5vw;
+    bottom:-70px;
+    width:520px;
+    height:520px;
+  }
+
+  .gb-home-collection-list{
+    grid-template-columns:1.2fr .8fr;
+  }
+
+  .gb-home-current-card{
+    grid-row:span 2;
+    min-height:570px;
+  }
+
+  .gb-home-upcoming-card{
+    min-height:330px;
+  }
+
+  .gb-home-archive-card{
+    min-height:230px;
+  }
+}

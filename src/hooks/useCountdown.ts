@@ -99,5 +99,5 @@ export function useCountdown(
   return value
 }
 
-export const pad = (n: number) =>
-  String(Math.max(0, n)).padStart(2, '0')
+export const pad = (value: number) =>
+  String(Math.max(0, value)).padStart(2, '0')
