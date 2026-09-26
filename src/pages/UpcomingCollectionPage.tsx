@@ -45,12 +45,12 @@ export function UpcomingCollectionPage() {
         )}
 
         {season?.start_at && countdown.done && (
-          <p className="gb-upcoming-done">
+          <p className="gb534-upcoming-finished">
             O horário de lançamento chegou.
           </p>
         )}
 
-        <p className="gb-upcoming-timezone">
+        <p className="gb534-upcoming-timezone">
           Horário de Brasília
         </p>
       </section>

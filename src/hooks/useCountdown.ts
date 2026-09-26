@@ -13,7 +13,7 @@ export type CountdownValue = {
   done: boolean
 }
 
-const EMPTY_COUNTDOWN: CountdownValue = {
+const EMPTY: CountdownValue = {
   days: 0,
   hours: 0,
   minutes: 0,
@@ -24,39 +24,25 @@ const EMPTY_COUNTDOWN: CountdownValue = {
 function calculate(
   targetISO: string | null
 ): CountdownValue {
-  if (!targetISO) {
-    return EMPTY_COUNTDOWN
-  }
+  if (!targetISO) return EMPTY
 
-  const targetDate = parseSeasonDate(targetISO)
-
-  if (!targetDate) {
-    return EMPTY_COUNTDOWN
-  }
+  const parsed = parseSeasonDate(targetISO)
+  if (!parsed) return EMPTY
 
   const now = Date.now()
-  const target = targetDate.getTime()
-
+  const target = parsed.getTime()
   let diff = Math.max(0, target - now)
 
-  const days = Math.floor(
-    diff / 86_400_000
-  )
+  const days = Math.floor(diff / 86_400_000)
   diff -= days * 86_400_000
 
-  const hours = Math.floor(
-    diff / 3_600_000
-  )
+  const hours = Math.floor(diff / 3_600_000)
   diff -= hours * 3_600_000
 
-  const minutes = Math.floor(
-    diff / 60_000
-  )
+  const minutes = Math.floor(diff / 60_000)
   diff -= minutes * 60_000
 
-  const seconds = Math.floor(
-    diff / 1_000
-  )
+  const seconds = Math.floor(diff / 1000)
 
   return {
     days,
@@ -83,17 +69,14 @@ export function useCountdown(
   useEffect(() => {
     setValue(calculate(stableTarget))
 
-    if (!stableTarget) {
-      return undefined
-    }
+    if (!stableTarget) return undefined
 
     const timer = window.setInterval(
       () => setValue(calculate(stableTarget)),
       intervalMs
     )
 
-    return () =>
-      window.clearInterval(timer)
+    return () => window.clearInterval(timer)
   }, [stableTarget, intervalMs])
 
   return value
