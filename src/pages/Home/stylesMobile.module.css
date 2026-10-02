@@ -1,0 +1,127 @@
+/* Home page — mobile-specific overrides */
+@media(max-width:899px){
+  :global(.app-shell):global(.home-page)>:global(.header){
+    width:100%;
+    max-width:100%;
+    top:34px!important;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.header) :global(.header-main){
+    width:100%;
+    max-width:100%;
+    height:62px;
+    grid-template-columns:40px minmax(0,1fr) auto;
+    gap:8px;
+    padding:0 12px;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.header) :global(.icon-btn){
+    width:40px;
+    min-width:40px;
+    height:40px;
+    font-size:22px;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.header) :global(.brand){
+    justify-self:center;
+    max-width:100%;
+    min-width:0;
+    gap:7px;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.header) :global(.brand-logo-circle){
+    width:38px;
+    height:38px;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.header) :global(.brand-logo-circle) img{
+    width:31px;
+    height:31px;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.header) :global(.brand)>span:last-child{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-size:16px;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.header) :global(.header-right-actions){
+    width:auto;
+    max-width:82px;
+    gap:1px;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.header) :global(.header-right-actions) :global(.icon-btn){
+    width:36px;
+    min-width:36px;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.header) :global(.category-strip){
+    display:none!important;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.home-counter-link){
+    width:100%!important;
+    max-width:100%!important;
+    padding:0 10px!important;
+    overflow:hidden;
+    gap:5px;
+    font-size:7px!important;
+    letter-spacing:.075em!important;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.home-counter-link) strong{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  :global(.app-shell):global(.home-page)>:global(.home-counter-link) :global(.topbar-time){
+    flex:0 0 auto;
+  }
+}
+
+@media(max-width:360px){
+  :global(.gb534-hero){
+    min-height:535px;
+  }
+
+  :global(.gb534-hero-content){
+    padding-inline:13px;
+  }
+
+  :global(.gb534-section){
+    padding-inline:12px;
+  }
+
+  :global(.gb534-trustbar){
+    gap:5px;
+    padding-inline:9px;
+  }
+
+  :global(.gb534-trustbar) strong{
+    font-size:7px;
+  }
+
+  :global(.gb534-trustbar) span{
+    font-size:6px;
+  }
+
+  :global(.gb534-product-grid){
+    gap-inline:7px;
+  }
+
+  :global(.gb534-editorial){
+    padding-inline:13px;
+  }
+
+  :global(.gb534-editorial-copy){
+    width:82%;
+  }
+
+  :global(.gb534-editorial-mark){
+    width:160px;
+    height:160px;
+  }
+}

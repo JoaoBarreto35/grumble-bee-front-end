@@ -8,9 +8,9 @@ export function Footer() {
         <div className="footer-col"><strong>Comprar</strong><Link to="/produtos">Nova coleção</Link><Link to="/produtos">Camisetas</Link><Link to="/produtos">Jaquetas</Link></div>
         <div className="footer-col"><strong>Ajuda</strong><a href="#medidas">Tabela de medidas</a><a href="#trocas">Trocas e devoluções</a><a href="#envios">Envios</a></div>
         <div className="footer-col"><strong>Marca</strong><Link to="/#editorial">Editorial</Link><Link to="/#sobre">Sobre a Grumble Bee</Link><a href="https://www.instagram.com/grbbzzzz" target="_blank" rel="noreferrer">@grbbzzzz</a></div>
-        <div className="footer-col"><strong>Conta</strong><Link to="/carrinho">Carrinho</Link><a href="#pedidos">Meus pedidos</a><a href="#login">Entrar</a></div>
+        <div className="footer-col"><strong>Conta</strong><Link to="/carrinho">Carrinho</Link><Link to="/consultar-pedido">Meus pedidos</Link><Link to="/entrar">Entrar</Link></div>
       </div>
-      <div className="copyright">© 2026 Grumble Bee · Frontend React baseado no visual V6.10 validado.</div>
+      <div className="copyright">© 2026 Grumble Bee · Todos os direitos reservados.</div>
     </footer>
   )
 }

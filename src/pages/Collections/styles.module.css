@@ -1,0 +1,583 @@
+/* Collections page — base mobile-first + desktop */
+/*
+  V5.3.8 — COLLECTIONS MOBILE
+  Scope: /colecoes
+*/
+
+:global(.app-shell):global(.collections-page){
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+}
+
+
+
+:global(.gb538-collections-page){
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+  background:#f2eee5;
+  --gb538-yellow:#f2bd1d;
+  --gb538-black:#0b0b0b;
+  --gb538-paper:#f2eee5;
+  --gb538-muted:#716a60;
+  --gb538-line:rgba(11,11,11,.13);
+}
+
+/* HERO */
+:global(.gb538-hero){
+  width:100%;
+  min-height:410px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:0 16px 34px;
+  background:
+    radial-gradient(
+      circle at 100% 0,
+      rgba(242,189,29,.10),
+      transparent 34%
+    ),
+    #0b0b0b;
+  color:#fff;
+  border-bottom:3px solid var(--gb538-yellow);
+}
+
+:global(.gb538-hero-copy){
+  position:relative;
+  z-index:2;
+  width:78%;
+}
+
+:global(.gb538-label){
+  display:flex;
+  align-items:center;
+  width:max-content;
+  max-width:100%;
+  gap:7px;
+  margin-bottom:11px;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+:global(.gb538-label) i{
+  width:20px;
+  height:1px;
+  background:var(--gb538-yellow);
+}
+
+:global(.gb538-hero) h1{
+  max-width:330px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(46px,14vw,61px);
+  font-weight:400;
+  line-height:.87;
+  letter-spacing:-.055em;
+}
+
+:global(.gb538-hero) p{
+  max-width:305px;
+  margin-top:13px;
+  color:#aaa49c;
+  font-size:10px;
+  line-height:1.55;
+}
+
+:global(.gb538-hero-mark){
+  position:absolute;
+  right:-38px;
+  bottom:-36px;
+  z-index:1;
+  width:178px;
+  height:178px;
+}
+
+:global(.gb538-hero-mark) img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:50%;
+  background:#f3eee4;
+  border:1px solid #292929;
+}
+
+:global(.gb538-hero-mark) span{
+  position:absolute;
+  left:-6px;
+  top:12px;
+  color:var(--gb538-yellow);
+  font-size:40px;
+  transform:rotate(-8deg);
+  text-shadow:3px 4px 0 #000;
+}
+
+/* STATUS STRIP */
+:global(.gb538-status-strip){
+  width:100%;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);
+  align-items:center;
+  gap:6px;
+  padding:14px 10px;
+  background:#e6dfd3;
+  border-bottom:1px solid var(--gb538-line);
+}
+
+:global(.gb538-status-strip)>div{
+  min-width:0;
+  display:grid;
+  gap:2px;
+  text-align:center;
+}
+
+:global(.gb538-status-strip) strong{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size:7px;
+  white-space:nowrap;
+}
+
+:global(.gb538-status-strip) span{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  color:#797268;
+  font-size:6px;
+  white-space:nowrap;
+}
+
+:global(.gb538-status-strip)>b{
+  color:#aa7c00;
+  font-size:11px;
+  font-weight:400;
+}
+
+/* LIST */
+:global(.gb538-list-section){
+  width:100%;
+  padding:46px 14px 56px;
+}
+
+:global(.gb538-section-head){
+  width:100%;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:12px;
+}
+
+:global(.gb538-section-head)>div{
+  min-width:0;
+}
+
+:global(.gb538-section-head) small{
+  display:block;
+  margin-bottom:7px;
+  color:#7d766b;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+:global(.gb538-section-head) h2{
+  max-width:270px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(34px,10vw,43px);
+  font-weight:400;
+  line-height:.9;
+  letter-spacing:-.045em;
+}
+
+:global(.gb538-section-head)>span{
+  flex:0 0 auto;
+  margin-bottom:3px;
+  color:#716a60;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+:global(.gb538-season-list){
+  width:100%;
+  display:grid;
+  gap:20px;
+  margin-top:22px;
+}
+
+:global(.gb538-season-card){
+  width:100%;
+  min-width:0;
+}
+
+:global(.gb538-season-media){
+  width:100%;
+  min-height:335px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  overflow:hidden;
+  padding:14px 14px 18px;
+  background-color:#111;
+  background-size:cover;
+  background-position:center;
+  color:#fff;
+}
+
+:global(.gb538-season-card-top){
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+:global(.gb538-season-card-top)>span{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+:global(.gb538-season-card-top)>b{
+  flex:0 0 auto;
+  padding:5px 7px;
+  background:#f2eee5;
+  color:#111;
+  font-size:6px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+:global(.gb538-season-card):global(.is-current)
+:global(.gb538-season-card-top)>b{
+  background:var(--gb538-yellow);
+}
+
+:global(.gb538-season-card-copy){
+  min-width:0;
+}
+
+:global(.gb538-season-card-copy)>small{
+  color:var(--gb538-yellow);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+:global(.gb538-season-card) h3{
+  max-width:295px;
+  margin-top:6px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(39px,11vw,50px);
+  font-weight:400;
+  line-height:.88;
+  letter-spacing:-.045em;
+}
+
+:global(.gb538-season-card) p{
+  max-width:285px;
+  margin-top:8px;
+  color:rgba(255,255,255,.72);
+  font-size:9px;
+  line-height:1.45;
+}
+
+:global(.gb538-countdown){
+  width:max-content;
+  max-width:100%;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-top:14px;
+  padding:8px 9px;
+  background:rgba(8,8,8,.90);
+  border-left:3px solid var(--gb538-yellow);
+}
+
+:global(.gb538-countdown)>div{
+  min-width:30px;
+  display:grid;
+  gap:2px;
+  text-align:center;
+}
+
+:global(.gb538-countdown) strong{
+  font-size:14px;
+  line-height:1;
+}
+
+:global(.gb538-countdown) span{
+  color:#9c968d;
+  font-size:6px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+:global(.gb538-countdown) i{
+  color:var(--gb538-yellow);
+  font-style:normal;
+}
+
+:global(.gb538-season-card-foot){
+  width:100%;
+  min-height:50px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:0 2px;
+  border-bottom:1px solid var(--gb538-line);
+}
+
+:global(.gb538-season-card-foot)>span{
+  color:#7c756a;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+:global(.gb538-season-card-foot)>a{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#111;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-align:right;
+}
+
+:global(.gb538-season-card-foot)>a b{
+  color:#a87900;
+  font-size:12px;
+}
+
+/* EMPTY */
+:global(.gb538-empty){
+  width:100%;
+  min-height:190px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-top:22px;
+  padding:22px 18px;
+  background:#e6dfd3;
+  border:1px solid var(--gb538-line);
+}
+
+:global(.gb538-empty)>span{
+  color:#aa7c00;
+  font-size:40px;
+}
+
+:global(.gb538-empty) small{
+  color:#777067;
+  font-size:7px;
+  letter-spacing:.12em;
+}
+
+:global(.gb538-empty) h3{
+  margin-top:5px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:27px;
+  font-weight:400;
+  line-height:.95;
+}
+
+/* EDITORIAL */
+:global(.gb538-editorial){
+  width:100%;
+  min-height:315px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  padding:38px 16px 42px;
+  background:#0b0b0b;
+  color:#fff;
+  border-bottom:3px solid var(--gb538-yellow);
+}
+
+:global(.gb538-editorial)>div{
+  position:relative;
+  z-index:2;
+  width:80%;
+}
+
+:global(.gb538-editorial) small{
+  color:var(--gb538-yellow);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.15em;
+}
+
+:global(.gb538-editorial) h2{
+  margin-top:10px;
+  font-family:Arial Black,Arial,Helvetica,sans-serif;
+  font-size:clamp(31px,9vw,43px);
+  line-height:.9;
+  letter-spacing:-.05em;
+}
+
+:global(.gb538-editorial) p{
+  max-width:240px;
+  margin-top:13px;
+  color:#aaa49c;
+  font-size:9px;
+  line-height:1.45;
+}
+
+:global(.gb538-editorial)>span{
+  position:absolute;
+  right:12px;
+  bottom:-10px;
+  color:rgba(242,189,29,.11);
+  font-size:145px;
+  line-height:1;
+  transform:rotate(7deg);
+}
+
+/* BOTTOM */
+:global(.gb538-bottom){
+  width:100%;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:18px;
+  padding:39px 16px 45px;
+  background:var(--gb538-yellow);
+  color:#111;
+}
+
+:global(.gb538-bottom)>div{
+  min-width:0;
+}
+
+:global(.gb538-bottom) small{
+  display:block;
+  margin-bottom:7px;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+:global(.gb538-bottom) h2{
+  max-width:270px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(31px,9vw,39px);
+  font-weight:400;
+  line-height:.92;
+  letter-spacing:-.04em;
+}
+
+:global(.gb538-bottom)>a{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding-bottom:4px;
+  border-bottom:1px solid #111;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+:global(.gb538-loading){
+  min-height:58vh;
+  display:flex;
+  align-items:center;
+  padding:30px 16px;
+}
+
+/* 360 safeguard */
+
+
+/* restrained desktop */
+@media(min-width:900px){
+  :global(.gb538-hero){
+    min-height:560px;
+    padding:0 4vw 56px;
+  }
+
+  :global(.gb538-hero-copy){
+    width:58%;
+  }
+
+  :global(.gb538-hero) h1{
+    font-size:80px;
+    max-width:540px;
+  }
+
+  :global(.gb538-hero) p{
+    max-width:450px;
+    font-size:13px;
+  }
+
+  :global(.gb538-hero-mark){
+    right:6vw;
+    bottom:-90px;
+    width:440px;
+    height:440px;
+  }
+
+  :global(.gb538-list-section){
+    padding:72px 4vw 80px;
+  }
+
+  :global(.gb538-season-list){
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:25px 18px;
+  }
+
+  :global(.gb538-season-card):global(.is-current){
+    grid-column:span 2;
+  }
+
+  :global(.gb538-season-card):global(.is-current)
+  :global(.gb538-season-media){
+    min-height:580px;
+  }
+
+  :global(.gb538-season-media){
+    min-height:480px;
+  }
+
+  :global(.gb538-editorial){
+    min-height:450px;
+    padding:60px 4vw;
+  }
+
+  :global(.gb538-editorial)>div{
+    width:58%;
+  }
+
+  :global(.gb538-editorial) h2{
+    font-size:64px;
+  }
+
+  :global(.gb538-editorial)>span{
+    right:6vw;
+    font-size:300px;
+  }
+
+  :global(.gb538-bottom){
+    padding:55px 4vw 60px;
+  }
+}

@@ -1,0 +1,184 @@
+/* Admin Products — base mobile-first + desktop */
+/* PRODUCTS */
+:global(.admin-products-layout){
+  display:grid;
+  grid-template-columns:285px minmax(0,1fr);
+  gap:13px;
+  align-items:start;
+}
+
+:global(.admin-products-layout)>:global(.admin-list){
+  position:sticky;
+  top:22px;
+  max-height:calc(100vh - 95px);
+  overflow:auto;
+  padding-right:2px;
+}
+
+:global(.admin-product-pick){
+  width:100%;
+  min-width:0;
+  display:grid;
+  gap:4px;
+  padding:12px!important;
+  border:1px solid var(--adm-line)!important;
+  background:#f8f4eb!important;
+  color:#111;
+  text-align:left;
+  cursor:pointer;
+}
+
+:global(.admin-product-pick):hover{
+  background:#fff!important;
+}
+
+:global(.admin-product-pick):global(.active){
+  border-color:#111!important;
+  background:#111!important;
+  color:#fff;
+  box-shadow:
+    inset 3px 0 0 var(--adm-yellow)!important;
+}
+
+:global(.admin-product-pick) span{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size:9px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+:global(.admin-product-pick) small{
+  color:#797268!important;
+  font-size:6px!important;
+}
+
+:global(.admin-product-pick):global(.active) small{
+  color:#8f8a82!important;
+}
+
+:global(.admin-upload-box){
+  padding:13px!important;
+  border:1px dashed rgba(17,17,17,.20)!important;
+  background:#eee8dd!important;
+  display:grid!important;
+  gap:10px!important;
+}
+
+:global(.admin-file-field){
+  display:grid!important;
+  gap:6px!important;
+  font-size:7px!important;
+  font-weight:800!important;
+  letter-spacing:.07em!important;
+  text-transform:uppercase;
+}
+
+:global(.admin-file-field) input[type="file"]{
+  width:100%;
+  min-height:42px;
+  border:1px solid var(--adm-line)!important;
+  background:#fff!important;
+  padding:8px!important;
+  font-size:7px!important;
+}
+
+:global(.admin-file-selected){
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:10px!important;
+  padding:9px 10px!important;
+  border:1px solid var(--adm-line)!important;
+  background:#fff!important;
+  font-size:7px!important;
+}
+
+:global(.admin-file-selected) span{
+  color:#817a70!important;
+}
+
+:global(.admin-image-list){
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px!important;
+}
+
+:global(.admin-image-list)>div{
+  width:auto!important;
+  min-width:0;
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--adm-line)!important;
+  background:#ddd5c8!important;
+}
+
+:global(.admin-image-list) img{
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:1!important;
+  object-fit:cover;
+}
+
+:global(.admin-image-list) span{
+  display:block!important;
+  padding:6px!important;
+  color:#716a60;
+  font-size:6px!important;
+  line-height:1.3;
+}
+
+:global(.admin-image-primary),
+:global(.admin-image-delete){
+  position:absolute!important;
+  top:4px!important;
+  width:25px!important;
+  height:25px!important;
+  border:0!important;
+  cursor:pointer;
+  font-size:10px;
+}
+
+:global(.admin-image-primary){
+  left:4px!important;
+  right:auto!important;
+  background:var(--adm-yellow)!important;
+  color:#111!important;
+}
+
+:global(.admin-image-delete){
+  right:4px!important;
+  background:#111!important;
+  color:#fff!important;
+}
+
+:global(.admin-variant-add){
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 90px 90px auto!important;
+  gap:7px!important;
+}
+
+:global(.admin-variant-list){
+  display:grid!important;
+  gap:6px!important;
+}
+
+:global(.admin-variant-list)>div{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 75px 90px auto!important;
+  align-items:center!important;
+  gap:7px!important;
+  padding-top:7px!important;
+  border-top:1px solid var(--adm-line)!important;
+}
+
+:global(.admin-variant-list) button{
+  border:0!important;
+  background:transparent!important;
+  color:var(--adm-danger)!important;
+  cursor:pointer;
+  font-size:7px;
+  font-weight:800;
+  text-transform:uppercase;
+}

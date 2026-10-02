@@ -15,8 +15,6 @@ export function parseSeasonDate(
 
   let normalized = raw
 
-  // PostgreSQL/API should normally return an explicit timezone.
-  // If an older record is naive, treat it as store wall-clock time.
   if (!hasTimezone(normalized)) {
     if (/^\d{4}-\d{2}-\d{2}$/.test(normalized)) {
       normalized = `${normalized}T00:00:00${STORE_UTC_OFFSET}`
@@ -59,10 +57,10 @@ function storeParts(date: Date) {
 export function toSeasonDateTimeLocal(
   value: string | null | undefined
 ) {
-  const parsed = parseSeasonDate(value)
-  if (!parsed) return ''
+  const date = parseSeasonDate(value)
+  if (!date) return ''
 
-  const parts = storeParts(parsed)
+  const parts = storeParts(date)
 
   return (
     `${parts.year}-${parts.month}-${parts.day}`
@@ -75,24 +73,19 @@ export function fromSeasonDateTimeLocal(
 ): string | null {
   if (!value) return null
 
-  // Brazil has no DST in 2026; the store operates on UTC-03.
-  const parsed = new Date(
-    `${value}:00${STORE_UTC_OFFSET}`
-  )
+  const date = new Date(`${value}:00${STORE_UTC_OFFSET}`)
 
-  return Number.isNaN(parsed.getTime())
+  return Number.isNaN(date.getTime())
     ? null
-    : parsed.toISOString()
+    : date.toISOString()
 }
 
 export function formatSeasonDateTime(
   value: string | null | undefined
 ) {
-  const parsed = parseSeasonDate(value)
+  const date = parseSeasonDate(value)
 
-  if (!parsed) {
-    return 'Data a definir'
-  }
+  if (!date) return 'Data a definir'
 
   return new Intl.DateTimeFormat(
     'pt-BR',
@@ -104,5 +97,5 @@ export function formatSeasonDateTime(
       hour: '2-digit',
       minute: '2-digit'
     }
-  ).format(parsed)
+  ).format(date)
 }

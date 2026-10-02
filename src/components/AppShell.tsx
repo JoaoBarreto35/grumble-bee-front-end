@@ -9,6 +9,29 @@ import { MenuDrawer } from './MenuDrawer'
 export function AppShell({ children }: { children: ReactNode }) {
   const location = useLocation()
   const isHome = location.pathname === '/'
+  const isCurrentCollection =
+    location.pathname === '/colecao-atual'
+  const isUpcomingCollection =
+    location.pathname === '/em-breve'
+  const isArchiveCollection =
+    location.pathname === '/colecao-arquivo'
+  const isCollectionsPage =
+    location.pathname === '/colecoes'
+  const isProductPage =
+    location.pathname.startsWith('/produto/')
+  const isCartPage =
+    location.pathname === '/carrinho'
+  const isCheckoutPage =
+    location.pathname === '/checkout'
+
+  const isCustomerCleanPage =
+    location.pathname === '/produtos'
+    || location.pathname === '/entrar'
+    || location.pathname === '/cadastro'
+    || location.pathname.startsWith('/minha-conta')
+    || location.pathname === '/consultar-pedido'
+    || location.pathname === '/pedido-confirmado'
+    || location.pathname.startsWith('/pagamento/')
   const [menuOpen, setMenuOpen] = useState(false)
   const { toastVisible, clearToast } = useCart()
   const closeMenu = useCallback(() => setMenuOpen(false), [])
@@ -23,7 +46,36 @@ export function AppShell({ children }: { children: ReactNode }) {
   }, [location.pathname, location.search, location.hash, closeMenu])
 
   return (
-    <div className={`app-shell${isHome ? ' home-page' : ''}`}>
+    <div
+      className={[
+        'app-shell',
+        isHome ? 'home-page' : '',
+        isCurrentCollection
+          ? 'current-collection-page'
+          : '',
+        isUpcomingCollection
+          ? 'upcoming-collection-page'
+          : '',
+        isArchiveCollection
+          ? 'archive-collection-page'
+          : '',
+        isCollectionsPage
+          ? 'collections-page'
+          : '',
+        isProductPage
+          ? 'product-detail-page'
+          : '',
+        isCartPage
+          ? 'cart-detail-page'
+          : '',
+        isCheckoutPage
+          ? 'checkout-detail-page'
+          : '',
+        isCustomerCleanPage
+          ? 'customer-clean-page'
+          : ''
+      ].filter(Boolean).join(' ')}
+    >
       <CountdownBar isHome={isHome} />
       <Header onOpenMenu={() => setMenuOpen(true)} />
       <MenuDrawer open={menuOpen} onClose={closeMenu} />

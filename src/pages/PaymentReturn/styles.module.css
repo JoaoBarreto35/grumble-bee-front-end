@@ -1,0 +1,114 @@
+/* PaymentReturn page — base mobile-first + desktop */
+/* PAYMENT RETURN */
+:global(.gb5312-payment-return-page){
+  min-height:calc(100vh - 100px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:36px 14px;
+  background:#0b0b0b;
+}
+
+:global(.gb5312-payment-return-card){
+  width:100%;
+  max-width:520px;
+  padding:29px 18px 25px;
+  background:#f2eee5;
+  border-top:4px solid var(--g12-yellow);
+}
+
+:global(.gb5312-payment-symbol){
+  width:47px;
+  height:47px;
+  display:grid;
+  place-items:center;
+  background:#111;
+  color:var(--g12-yellow);
+  font-size:19px;
+  font-weight:900;
+}
+
+:global(.gb5312-payment-return-card):global(.failure)
+:global(.gb5312-payment-symbol){
+  background:#7d3029;
+  color:#fff;
+}
+
+:global(.gb5312-payment-return-card):global(.pending)
+:global(.gb5312-payment-symbol){
+  background:#9b6d00;
+  color:#fff;
+}
+
+:global(.gb5312-payment-return-card)>small{
+  display:block;
+  margin-top:16px;
+  color:#777067;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+
+:global(.gb5312-payment-return-card) h1{
+  max-width:380px;
+  margin-top:6px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:39px;
+  font-weight:400;
+  line-height:.92;
+}
+
+:global(.gb5312-payment-return-card)>p{
+  max-width:390px;
+  margin-top:11px;
+  color:#716a60;
+  font-size:9px;
+  line-height:1.55;
+}
+
+:global(.gb5312-payment-code){
+  display:grid;
+  gap:4px;
+  margin-top:18px;
+  padding:12px;
+  background:#e4ddd1;
+}
+
+:global(.gb5312-payment-code) span{
+  color:#777067;
+  font-size:6px;
+  text-transform:uppercase;
+}
+
+:global(.gb5312-payment-code) strong{
+  font-size:10px;
+}
+
+:global(.gb5312-payment-actions){
+  display:grid;
+  gap:8px;
+  margin-top:20px;
+}
+
+:global(.gb5312-payment-actions) a{
+  min-height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 12px;
+  font-size:8px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+:global(.gb5312-payment-actions) :global(.primary){
+  background:#111;
+  color:#fff;
+  box-shadow:
+    inset 0 -4px 0 var(--g12-yellow);
+}
+
+:global(.gb5312-payment-actions) :global(.secondary){
+  border:1px solid rgba(17,17,17,.20);
+  color:#111;
+}

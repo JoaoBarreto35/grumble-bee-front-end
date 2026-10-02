@@ -1,0 +1,62 @@
+/* OrderConfirmation page — base mobile-first + desktop */
+/* SUCCESS */
+:global(.gb5312-success-hero){
+  min-height:385px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-end;
+  padding:44px 16px 38px;
+  background:#0b0b0b;
+  color:#fff;
+  border-bottom:3px solid var(--g12-yellow);
+}
+
+:global(.gb5312-success-hero)>span{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  background:var(--g12-yellow);
+  color:#111;
+  font-size:19px;
+  font-weight:900;
+}
+
+:global(.gb5312-success-hero) small{
+  margin-top:16px;
+  color:#918b83;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+
+:global(.gb5312-success-hero) h1{
+  max-width:330px;
+  margin-top:7px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(43px,12vw,56px);
+  font-weight:400;
+  line-height:.89;
+}
+
+:global(.gb5312-success-hero) p{
+  max-width:310px;
+  margin-top:12px;
+  color:#aaa49c;
+  font-size:9px;
+  line-height:1.55;
+}
+
+:global(.gb5312-success-hero) p strong{
+  color:#fff;
+}
+
+:global(.gb5312-success-hero)>a{
+  margin-top:19px;
+  border-bottom:1px solid #aaa49c;
+  padding-bottom:2px;
+  color:#aaa49c;
+  font-size:7px;
+  text-transform:uppercase;
+}

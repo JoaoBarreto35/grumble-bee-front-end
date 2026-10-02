@@ -72,7 +72,7 @@ export function MercadoPagoCardPayment({
   if (!publicKey) {
     return (
       <div className="mp-card-warning">
-        Public Key do Mercado Pago não configurada no servidor.
+        O pagamento por cartão está temporariamente indisponível.
       </div>
     )
   }
@@ -114,7 +114,7 @@ export function MercadoPagoCardPayment({
       />
 
       <p className="mp-secure-note">
-        Os dados do cartão são tokenizados pelo Mercado Pago e não passam pelo servidor da Grumble Bee.
+        Seus dados de cartão são processados com segurança pelo Mercado Pago.
       </p>
     </div>
   )

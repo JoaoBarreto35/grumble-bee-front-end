@@ -1,0 +1,84 @@
+/* OrderLookup page — base mobile-first + desktop */
+/* LOOKUP */
+:global(.gb5312-lookup-section),
+:global(.gb5312-order-detail-section){
+  width:100%;
+  padding:34px 14px 54px;
+}
+
+:global(.gb5312-lookup-card){
+  width:100%;
+  padding:20px 13px 22px;
+  background:#f8f4eb;
+  border:1px solid var(--g12-line);
+}
+
+:global(.gb5312-lookup-card)>div:first-child small{
+  color:#7d766b;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+
+:global(.gb5312-lookup-card)>div:first-child h2{
+  margin-top:5px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:30px;
+  font-weight:400;
+  line-height:.92;
+}
+
+:global(.gb5312-lookup-card) label{
+  display:grid;
+  gap:6px;
+  margin-top:14px;
+}
+
+:global(.gb5312-lookup-card) label>span{
+  color:#5f594f;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+:global(.gb5312-lookup-card) input{
+  width:100%;
+  height:46px;
+  border:1px solid rgba(17,17,17,.17);
+  border-radius:0;
+  background:#fff;
+  padding:0 10px;
+  font:inherit;
+  font-size:10px;
+}
+
+:global(.gb5312-lookup-card) button{
+  width:100%;
+  min-height:48px;
+  margin-top:16px;
+  border:1px solid #111;
+  background:#111;
+  color:#fff;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  box-shadow:
+    inset 0 -4px 0 var(--g12-yellow);
+}
+
+:global(.gb5312-lookup-card)> a{
+  width:max-content;
+  max-width:100%;
+  display:block;
+  margin:16px auto 0;
+  border-bottom:1px solid #777067;
+  padding-bottom:2px;
+  color:#777067;
+  font-size:7px;
+}
+
+:global(.gb5312-lookup-result){
+  margin-top:22px;
+}

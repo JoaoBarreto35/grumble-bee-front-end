@@ -1,0 +1,10 @@
+/* OrderLookup page — mobile-specific overrides */
+/* No additional route-specific overrides required. */
+
+@media(max-width:899px){
+  :global(.gb5312-lookup-page){
+    width:100%;
+    max-width:100%;
+    overflow-x:clip;
+  }
+}

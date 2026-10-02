@@ -1,0 +1,113 @@
+/* Shared storefront mobile header and narrow-screen safeguards */
+@media(max-width:899px){
+  :global(.app-shell):global(.customer-clean-page)>:global(.header){
+    width:100%;
+    max-width:100%;
+    top:34px!important;
+  }
+
+  :global(.app-shell):global(.customer-clean-page)>:global(.header) :global(.header-main){
+    width:100%;
+    max-width:100%;
+    height:62px;
+    grid-template-columns:40px minmax(0,1fr) auto;
+    gap:8px;
+    padding:0 12px;
+  }
+
+  :global(.app-shell):global(.customer-clean-page)>:global(.header) :global(.icon-btn){
+    width:40px;
+    min-width:40px;
+    height:40px;
+  }
+
+  :global(.app-shell):global(.customer-clean-page)>:global(.header) :global(.brand){
+    justify-self:center;
+    min-width:0;
+    max-width:100%;
+    gap:7px;
+  }
+
+  :global(.app-shell):global(.customer-clean-page)>:global(.header) :global(.brand-logo-circle){
+    width:38px;
+    height:38px;
+  }
+
+  :global(.app-shell):global(.customer-clean-page)>:global(.header) :global(.brand-logo-circle) img{
+    width:31px;
+    height:31px;
+  }
+
+  :global(.app-shell):global(.customer-clean-page)>:global(.header) :global(.brand)>span:last-child{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-size:16px;
+  }
+
+  :global(.app-shell):global(.customer-clean-page)>:global(.header) :global(.header-right-actions){
+    width:auto;
+    max-width:82px;
+    gap:1px;
+  }
+
+  :global(.app-shell):global(.customer-clean-page)>:global(.header) :global(.header-right-actions) :global(.icon-btn){
+    width:36px;
+    min-width:36px;
+  }
+
+  :global(.app-shell):global(.customer-clean-page)>:global(.header) :global(.category-strip){
+    display:none!important;
+  }
+
+  :global(.app-shell):global(.customer-clean-page)>:global(.home-counter-link){
+    width:100%!important;
+    max-width:100%!important;
+    padding:0 10px!important;
+    overflow:hidden;
+    gap:5px;
+    font-size:7px!important;
+    letter-spacing:.075em!important;
+  }
+}
+/* 360 safeguard */
+@media(max-width:360px){
+  :global(.gb5312-public-hero),
+  :global(.gb5312-account-hero),
+  :global(.gb5312-products-section),
+  :global(.gb5312-auth-brand),
+  :global(.gb5312-auth-card),
+  :global(.gb5312-account-layout),
+  :global(.gb5312-lookup-section),
+  :global(.gb5312-order-detail-section),
+  :global(.gb5312-success-hero),
+  :global(.gb5312-yellow-bottom){
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  :global(.gb5312-form-two){
+    grid-template-columns:1fr;
+  }
+
+  :global(.gb5312-order-contact-grid){
+    grid-template-columns:1fr;
+  }
+
+  :global(.gb5312-order-card){
+    grid-template-columns:minmax(0,1fr) auto;
+  }
+
+  :global(.gb5312-order-card)>b{
+    display:none;
+  }
+
+  :global(.gb5312-products-grid){
+    gap-inline:7px;
+  }
+
+  :global(.gb5312-yellow-bottom){
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}

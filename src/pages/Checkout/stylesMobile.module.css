@@ -1,0 +1,114 @@
+/* Checkout page — mobile-specific overrides */
+@media(max-width:899px){
+  :global(.app-shell):global(.checkout-detail-page)>:global(.header){
+    width:100%;
+    max-width:100%;
+    top:34px!important;
+  }
+
+  :global(.app-shell):global(.checkout-detail-page)>:global(.header) :global(.header-main){
+    width:100%;
+    max-width:100%;
+    height:62px;
+    grid-template-columns:40px minmax(0,1fr) auto;
+    gap:8px;
+    padding:0 12px;
+  }
+
+  :global(.app-shell):global(.checkout-detail-page)>:global(.header) :global(.icon-btn){
+    width:40px;
+    min-width:40px;
+    height:40px;
+  }
+
+  :global(.app-shell):global(.checkout-detail-page)>:global(.header) :global(.brand){
+    justify-self:center;
+    max-width:100%;
+    min-width:0;
+    gap:7px;
+  }
+
+  :global(.app-shell):global(.checkout-detail-page)>:global(.header) :global(.brand-logo-circle){
+    width:38px;
+    height:38px;
+  }
+
+  :global(.app-shell):global(.checkout-detail-page)>:global(.header) :global(.brand-logo-circle) img{
+    width:31px;
+    height:31px;
+  }
+
+  :global(.app-shell):global(.checkout-detail-page)>:global(.header) :global(.brand)>span:last-child{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-size:16px;
+  }
+
+  :global(.app-shell):global(.checkout-detail-page)>:global(.header) :global(.header-right-actions){
+    width:auto;
+    max-width:82px;
+    gap:1px;
+  }
+
+  :global(.app-shell):global(.checkout-detail-page)>:global(.header) :global(.header-right-actions) :global(.icon-btn){
+    width:36px;
+    min-width:36px;
+  }
+
+  :global(.app-shell):global(.checkout-detail-page)>:global(.header) :global(.category-strip){
+    display:none!important;
+  }
+
+  :global(.app-shell):global(.checkout-detail-page)>:global(.home-counter-link){
+    width:100%!important;
+    max-width:100%!important;
+    padding:0 10px!important;
+    overflow:hidden;
+    gap:5px;
+    font-size:7px!important;
+    letter-spacing:.075em!important;
+  }
+}
+
+@media(max-width:360px){
+  :global(.gb5311-checkout-hero),
+  :global(.gb5311-checkout-layout),
+  :global(.gb5311-checkout-empty),
+  :global(.gb5311-checkout-bottom){
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  :global(.gb5311-checkout-trust){
+    gap:5px;
+    padding-inline:8px;
+  }
+
+  :global(.gb5311-checkout-trust) strong{
+    font-size:6px;
+  }
+
+  :global(.gb5311-checkout-trust) span{
+    font-size:5px;
+  }
+
+  :global(.gb5311-form-section){
+    padding-left:11px;
+    padding-right:11px;
+  }
+
+  :global(.gb5311-cep-row){
+    grid-template-columns:minmax(0,1fr) 102px;
+    gap:6px;
+  }
+
+  :global(.gb5311-payment-tabs){
+    gap:5px;
+  }
+
+  :global(.gb5311-summary){
+    padding-left:12px;
+    padding-right:12px;
+  }
+}

@@ -1,0 +1,163 @@
+/* Admin Seasons — base mobile-first + desktop */
+/* SEASONS */
+:global(.admin-split){
+  display:grid;
+  grid-template-columns:minmax(330px,500px) minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+}
+
+:global(.admin-list){
+  min-width:0;
+  display:grid;
+  gap:7px;
+}
+
+:global(.admin-row-card){
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:13px 12px!important;
+  border:1px solid var(--adm-line)!important;
+  background:#f8f4eb!important;
+}
+
+:global(.admin-row-card)>div:first-child{
+  min-width:0;
+  display:grid;
+  gap:3px;
+}
+
+:global(.admin-row-card) small{
+  color:#7e776e!important;
+  font-size:6px!important;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+
+:global(.admin-row-card) strong{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size:11px!important;
+  white-space:nowrap;
+}
+
+:global(.admin-row-card) span{
+  color:#777067!important;
+  font-size:7px!important;
+}
+
+:global(.admin-row-actions){
+  flex:0 0 auto;
+  display:flex;
+  gap:5px;
+}
+
+:global(.admin-row-actions) button{
+  min-height:33px;
+  padding:0 8px!important;
+  border:1px solid rgba(17,17,17,.17)!important;
+  background:#fff!important;
+  color:#111;
+  cursor:pointer;
+  font-size:6px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+:global(.admin-row-actions) :global(.danger){
+  color:var(--adm-danger);
+}
+
+/* season media */
+:global(.admin-season-images){
+  margin-top:13px;
+}
+
+:global(.admin-subhead){
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+:global(.admin-subhead) p{
+  max-width:520px;
+  margin-top:5px!important;
+  color:#817a71!important;
+  font-size:8px!important;
+  line-height:1.45!important;
+}
+
+:global(.admin-season-image-card){
+  display:grid!important;
+  grid-template-columns:130px minmax(0,1fr)!important;
+  gap:12px!important;
+  align-items:center!important;
+  padding-top:12px!important;
+  border-top:1px solid var(--adm-line)!important;
+}
+
+:global(.admin-season-image-preview){
+  height:88px!important;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  border:1px solid var(--adm-line)!important;
+  background:#ddd5c8!important;
+  color:#827b72!important;
+  font-size:6px!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase;
+}
+
+:global(.admin-season-image-preview) img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+:global(.admin-season-image-info){
+  display:flex!important;
+  align-items:center!important;
+  flex-wrap:wrap!important;
+  gap:7px!important;
+}
+
+:global(.admin-season-image-info)>strong{
+  width:100%;
+  font-size:9px!important;
+}
+
+:global(.admin-file-button){
+  min-height:36px;
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  padding:0 10px!important;
+  border:1px solid rgba(17,17,17,.18)!important;
+  background:#f4f0e7!important;
+  color:#111!important;
+  cursor:pointer;
+  font-size:6px!important;
+  font-weight:900!important;
+  letter-spacing:.07em!important;
+  text-transform:uppercase;
+}
+
+:global(.admin-file-button) input{
+  display:none!important;
+}
+
+:global(.admin-image-remove){
+  border:0!important;
+  background:transparent!important;
+  color:var(--adm-danger)!important;
+  cursor:pointer;
+  font-size:6px!important;
+  font-weight:900!important;
+  text-transform:uppercase;
+}

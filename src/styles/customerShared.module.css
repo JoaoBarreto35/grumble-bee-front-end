@@ -1,0 +1,217 @@
+/* Shared storefront foundations + desktop responsive rules */
+/*
+  V5.3.12 — FINAL STOREFRONT PAGES
+  Remaining public/customer-facing pages
+*/
+
+:global(.app-shell):global(.customer-clean-page){
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+}
+
+
+
+:global(.gb5312-products-page),
+:global(.gb5312-auth-page),
+:global(.gb5312-account-page),
+:global(.gb5312-order-page),
+:global(.gb5312-lookup-page),
+:global(.gb5312-confirmation-page),
+:global(.gb5312-payment-return-page){
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+  background:#f2eee5;
+  --g12-yellow:#f2bd1d;
+  --g12-black:#0b0b0b;
+  --g12-paper:#f2eee5;
+  --g12-soft:#e6dfd3;
+  --g12-muted:#716a60;
+  --g12-line:rgba(11,11,11,.13);
+}
+
+/* COMMON HERO */
+:global(.gb5312-public-hero),
+:global(.gb5312-account-hero){
+  width:100%;
+  min-height:310px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:45px 16px 34px;
+  background:
+    radial-gradient(
+      circle at 100% 0,
+      rgba(242,189,29,.10),
+      transparent 34%
+    ),
+    #0b0b0b;
+  color:#fff;
+  border-bottom:3px solid var(--g12-yellow);
+}
+
+:global(.gb5312-public-hero)>div,
+:global(.gb5312-account-hero)>div{
+  position:relative;
+  z-index:2;
+  width:80%;
+}
+
+:global(.gb5312-public-label){
+  display:flex;
+  align-items:center;
+  width:max-content;
+  max-width:100%;
+  gap:7px;
+  margin-bottom:10px;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+:global(.gb5312-public-label) i{
+  width:20px;
+  height:1px;
+  background:var(--g12-yellow);
+}
+
+:global(.gb5312-public-label) a{
+  color:#fff;
+}
+
+:global(.gb5312-public-hero) h1,
+:global(.gb5312-account-hero) h1{
+  max-width:335px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(45px,13vw,59px);
+  font-weight:400;
+  line-height:.88;
+  letter-spacing:-.055em;
+}
+
+:global(.gb5312-public-hero) p,
+:global(.gb5312-account-hero) p{
+  max-width:300px;
+  margin-top:11px;
+  color:#aaa49c;
+  font-size:9px;
+  line-height:1.5;
+}
+
+:global(.gb5312-public-bolt){
+  position:absolute;
+  right:13px;
+  bottom:-14px;
+  color:rgba(242,189,29,.15);
+  font-size:125px;
+  line-height:1;
+  transform:rotate(8deg);
+}
+
+/* GLOBAL LOADING */
+:global(.gb5312-loading-page){
+  min-height:55vh;
+  display:flex;
+  align-items:center;
+  padding:30px 16px;
+  background:#f2eee5;
+  color:#716a60;
+}
+
+/* DESKTOP */
+@media(min-width:900px){
+  :global(.gb5312-public-hero),
+  :global(.gb5312-account-hero){
+    min-height:400px;
+    padding:72px 4vw 55px;
+  }
+
+  :global(.gb5312-public-hero) h1,
+  :global(.gb5312-account-hero) h1{
+    font-size:76px;
+    max-width:540px;
+  }
+
+  :global(.gb5312-products-section){
+    padding:70px 4vw 80px;
+  }
+
+  :global(.gb5312-products-grid){
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:18px;
+  }
+
+  :global(.gb5312-auth-shell){
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:calc(100vh - 110px);
+  }
+
+  :global(.gb5312-auth-brand){
+    min-height:100%;
+    padding:60px 4vw;
+  }
+
+  :global(.gb5312-auth-card){
+    align-self:center;
+    max-width:620px;
+    padding:50px 5vw;
+  }
+
+  :global(.gb5312-account-layout){
+    display:grid;
+    grid-template-columns:290px minmax(0,1fr);
+    align-items:start;
+    gap:3vw;
+    padding:55px 4vw 80px;
+  }
+
+  :global(.gb5312-account-orders){
+    margin-top:0;
+  }
+
+  :global(.gb5312-profile-card){
+    position:sticky;
+    top:135px;
+  }
+
+  :global(.gb5312-lookup-section),
+  :global(.gb5312-order-detail-section){
+    max-width:980px;
+    margin:0 auto;
+    padding:55px 4vw 80px;
+  }
+
+  :global(.gb5312-lookup-card){
+    max-width:560px;
+    margin:0 auto;
+    padding:25px 23px;
+  }
+
+  :global(.gb5312-order-detail-head){
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    padding:23px 20px;
+  }
+
+  :global(.gb5312-order-statuses){
+    width:390px;
+  }
+
+  :global(.gb5312-success-hero){
+    min-height:500px;
+    padding:70px 4vw 60px;
+  }
+
+  :global(.gb5312-success-hero) h1{
+    max-width:600px;
+    font-size:72px;
+  }
+
+  :global(.gb5312-yellow-bottom){
+    padding:55px 4vw 60px;
+  }
+}

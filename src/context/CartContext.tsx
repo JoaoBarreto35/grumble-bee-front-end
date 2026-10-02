@@ -29,6 +29,10 @@ type CartContextValue = {
     qty?: number
   ) => void
   removeItem: (index: number) => void
+  updateItemQty: (
+    index: number,
+    qty: number
+  ) => void
   clearCart: () => void
   clearToast: () => void
 }
@@ -248,6 +252,61 @@ export function CartProvider({
           current.filter((_, i) => i !== index)
         ),
 
+      updateItemQty: (
+        index: number,
+        qty: number
+      ) =>
+        setItems(current => {
+          const target = current[index]
+
+          if (!target) {
+            return current
+          }
+
+          const product = products.find(
+            item => item.id === target.id
+          )
+
+          const variant = product
+            ? (
+                target.variantId
+                  ? product.variants.find(
+                      item =>
+                        item.id === target.variantId
+                    )
+                  : undefined
+              )
+              ?? product.variants.find(
+                item =>
+                  item.fit === target.fit
+                  && item.size === target.size
+              )
+            : undefined
+
+          const maxQty = Math.max(
+            1,
+            variant?.quantity ?? qty
+          )
+
+          const nextQty = Math.max(
+            1,
+            Math.min(
+              Math.floor(Number(qty) || 1),
+              maxQty
+            )
+          )
+
+          return current.map(
+            (item, itemIndex) =>
+              itemIndex === index
+                ? {
+                    ...item,
+                    qty: nextQty
+                  }
+                : item
+          )
+        }),
+
       clearCart: () => setItems([]),
 
       clearToast: () =>
@@ -257,7 +316,8 @@ export function CartProvider({
       items,
       count,
       subtotal,
-      toastVisible
+      toastVisible,
+      products
     ]
   )
 
