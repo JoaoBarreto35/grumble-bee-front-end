@@ -1,7 +1,11 @@
 {
   "name": "grumble-bee-storefront",
   "private": true,
+<<<<<<< HEAD
   "version": "6.0.0",
+=======
+  "version": "5.3.4",
+>>>>>>> 4f4d9b296ae796e667925784c32b760d64fbb98a
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",

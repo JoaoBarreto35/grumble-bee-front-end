@@ -78,32 +78,33 @@ export function HomePage() {
   }
 
   return (
-    <main className="gb-home-clean">
+    <main className="gb534-home">
       {current && (
-        <section
-          className="gb-home-hero"
-          aria-label={`Temporada atual ${current.name}`}
-        >
+        <section className="gb534-hero">
           <SeasonPicture
             season={current}
-            className="gb-home-hero-picture"
+            className="gb534-hero-media"
             fallbackDesktop="/assets/colecao-anime-landscape.jpg"
             fallbackMobile="/assets/colecao-anime.jpg"
             alt={`Temporada ${current.name}`}
           />
 
-          <div className="gb-home-hero-shade" />
+          <div className="gb534-hero-overlay" />
 
-          <span
-            className="gb-home-hero-bolt"
+          <div
+            className="gb534-hero-lightning"
             aria-hidden="true"
           >
             ⚡
-          </span>
+          </div>
 
-          <div className="gb-home-hero-copy">
-            <div className="gb-home-hero-kicker">
-              Temporada atual · {String(current.number).padStart(2, '0')}
+          <div className="gb534-hero-content">
+            <div className="gb534-eyebrow">
+              <span>Temporada atual</span>
+              <i />
+              <span>
+                {String(current.number).padStart(2, '0')}
+              </span>
             </div>
 
             <h1>{current.name}</h1>
@@ -113,17 +114,17 @@ export function HomePage() {
                 ?? current.theme}
             </p>
 
-            <div className="gb-home-hero-actions">
+            <div className="gb534-hero-actions">
               <Link
-                className="gb-home-primary"
                 to="/colecao-atual"
+                className="gb534-button gb534-button-primary"
               >
                 Ver temporada
               </Link>
 
               <Link
-                className="gb-home-secondary"
                 to="/produtos"
+                className="gb534-button gb534-button-ghost"
               >
                 Ver peças
               </Link>
@@ -132,8 +133,29 @@ export function HomePage() {
         </section>
       )}
 
-      <section className="gb-home-products">
-        <div className="gb-home-section-head">
+      <section className="gb534-trustbar">
+        <div>
+          <strong>Compra segura</strong>
+          <span>Pix e cartão</span>
+        </div>
+
+        <i />
+
+        <div>
+          <strong>Peças únicas</strong>
+          <span>Ecxlusivas</span>
+        </div>
+
+        <i />
+
+        <div>
+          <strong>Seu pedido</strong>
+          <span>Acompanhado</span>
+        </div>
+      </section>
+
+      <section className="gb534-section gb534-products">
+        <div className="gb534-section-head">
           <div>
             <small>
               {current
@@ -141,7 +163,11 @@ export function HomePage() {
                 : 'Grumble Bee'}
             </small>
 
-            <h2>Produtos em destaque</h2>
+            <h2>
+              Produtos em
+              <br />
+              destaque
+            </h2>
           </div>
 
           <Link to="/produtos">
@@ -150,14 +176,12 @@ export function HomePage() {
         </div>
 
         {featured.length > 0 ? (
-          <div className="gb-home-product-track">
+          <div className="gb534-product-grid">
             {featured.map(product => (
-              <div
-                className="gb-home-product-card"
+              <ProductCard
                 key={product.id}
-              >
-                <ProductCard product={product} />
-              </div>
+                product={product}
+              />
             ))}
           </div>
         ) : (
@@ -168,12 +192,15 @@ export function HomePage() {
       </section>
 
       <section
-        className="gb-home-editorial"
+        className="gb534-editorial"
         id="editorial"
       >
-        <div className="gb-home-editorial-copy">
-          <small>Editorial</small>
+        <div className="gb534-editorial-top">
+          <span>Editorial</span>
+          <b>⚡</b>
+        </div>
 
+        <div className="gb534-editorial-copy">
           <h2>
             NO BASIC.
             <br />
@@ -184,29 +211,24 @@ export function HomePage() {
             Limited drops, custom pieces, only 012
           </p>
 
-          <Link
-            className="gb-home-editorial-cta"
-            to="/produtos"
-          >
+          <Link to="/produtos">
             Ver produtos
+            <span>↗</span>
           </Link>
         </div>
 
-        <div
-          className="gb-home-editorial-brand"
-          aria-hidden="true"
-        >
+        <div className="gb534-editorial-mark">
           <img
             src="/assets/logo-grumble-bee.png"
             alt=""
           />
 
-          <span>⚡</span>
+          <span>GRUMBLE BEE</span>
         </div>
       </section>
 
-      <section className="gb-home-collections">
-        <div className="gb-home-section-head">
+      <section className="gb534-section gb534-collections">
+        <div className="gb534-section-head">
           <div>
             <small>Coleções</small>
 
@@ -222,47 +244,44 @@ export function HomePage() {
           </Link>
         </div>
 
-        <div className="gb-home-collection-list">
+        <div className="gb534-collection-grid">
           {current && (
             <Link
-              className="gb-home-collection-card gb-current-card"
               to="/colecao-atual"
+              className="gb534-collection-card gb534-current"
               style={{
                 backgroundImage:
-                  `linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,.05) 70%),url("${seasonCardImage(current, '/assets/colecao-anime-landscape.jpg')}")`
+                  `linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,.05) 72%),url("${seasonCardImage(current, '/assets/colecao-anime-landscape.jpg')}")`
               }}
             >
+              <span className="gb534-collection-status">
+                Agora · Temporada {String(current.number).padStart(2, '0')}
+              </span>
+
               <div>
-                <small>
-                  Agora · Temporada {String(current.number).padStart(2, '0')}
-                </small>
-
-                <h3>
-                  {current.name} Drop.
-                </h3>
-
+                <h3>{current.name} Drop.</h3>
                 <p>{current.theme}</p>
               </div>
 
-              <span aria-hidden="true">⚡</span>
+              <b aria-hidden="true">⚡</b>
             </Link>
           )}
 
           {upcoming && (
             <Link
-              className="gb-home-collection-card gb-upcoming-card"
               to="/em-breve"
+              className="gb534-collection-card gb534-upcoming"
               style={{
                 backgroundImage:
-                  `linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,.16) 72%),url("${seasonCardImage(upcoming, '/assets/colecao-horror.jpg')}")`
+                  `linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.12) 70%),url("${seasonCardImage(upcoming, '/assets/colecao-horror.jpg')}")`
               }}
             >
-              <div>
-                <small>Próxima temporada</small>
+              <span className="gb534-collection-status">
+                Próxima temporada
+              </span>
 
-                <h3>
-                  {upcoming.name}
-                </h3>
+              <div>
+                <h3>{upcoming.name}</h3>
 
                 <p>
                   {upcoming.description
@@ -271,7 +290,7 @@ export function HomePage() {
 
                 {upcoming.start_at
                   && !upcomingCountdown.done && (
-                    <div className="gb-home-upcoming-count">
+                    <div className="gb534-mini-countdown">
                       <div>
                         <strong>
                           {pad(upcomingCountdown.days)}
@@ -303,8 +322,8 @@ export function HomePage() {
           )}
 
           <Link
-            className="gb-home-archive-card"
             to="/colecao-arquivo"
+            className="gb534-archive"
           >
             <div>
               <small>Arquivo</small>
@@ -323,6 +342,26 @@ export function HomePage() {
             <span>ESGOTADO</span>
           </Link>
         </div>
+      </section>
+
+      <section className="gb534-final-cta">
+        <div>
+          <small>GRUMBLE BEE</small>
+          <h2>
+            Limited drops.
+            <br />
+            Identidade.
+          </h2>
+        </div>
+
+        <Link to="/produtos">
+          Comprar
+          <span>↗</span>
+        </Link>
+
+        <b aria-hidden="true">
+          ⚡
+        </b>
       </section>
     </main>
   )
